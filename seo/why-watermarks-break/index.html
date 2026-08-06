@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="theme-color" content="#0D0F13" />
+<meta name="theme-color" content="#0a0d10" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
@@ -87,236 +87,613 @@
 }
 </script>
 
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
-  :root { color-scheme: dark; }
-  * { box-sizing: border-box; }
+  :root {
+    color-scheme: dark;
+    --ink-1000:#07090b;
+    --ink-950:#0a0d10;
+    --ink-900:#101419;
+    --ink-850:#151a20;
+    --line:rgba(230,238,242,.11);
+    --line-strong:rgba(230,238,242,.19);
+    --paper:#eef3f4;
+    --muted:#94a0a8;
+    --muted-2:#707b83;
+    --signal:#66d6c8;
+    --signal-soft:rgba(102,214,200,.09);
+    --warning:#f1b866;
+    --warning-soft:rgba(241,184,102,.075);
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; background:var(--ink-1000); }
   body {
-    margin: 0; background: #050508; color: #e6e9ef;
-    font: 17px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
+    margin:0;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.012), transparent 320px),
+      var(--ink-1000);
+    color:var(--paper);
+    font:400 16px/1.8 "Sora",sans-serif;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
   }
-  a { color: #38d6f0; text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
-  header.site {
-    position: sticky; top: 0; z-index: 10; backdrop-filter: blur(14px);
-    background: rgba(255,255,255,.04); border-bottom: 1px solid rgba(255,255,255,.08);
+  body::before {
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.24;
+    background-image:
+      linear-gradient(rgba(255,255,255,.017) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.017) 1px, transparent 1px);
+    background-size:44px 44px;
+    mask-image:linear-gradient(to bottom,rgba(0,0,0,.72),transparent 78%);
   }
-  header.site .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; max-width: 980px; }
-  .brand { display: flex; align-items: center; gap: 9px; font-weight: 700; font-size: 14px; color: #eef1f6; }
-  .brand .dot { width: 24px; height: 24px; border-radius: 7px; background: linear-gradient(135deg, #22d3ee, #2563eb); display: inline-block; }
-  .nav a { color: #aeb6c4; font-size: 13px; margin-left: 18px; }
-  .hero { padding: 64px 0 26px; position: relative; overflow: hidden; }
-  .hero::before, .hero::after { content: ""; position: absolute; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: -1; }
-  .hero::before { width: 460px; height: 460px; background: rgba(88,28,135,.22); top: -160px; left: -160px; }
-  .hero::after  { width: 420px; height: 420px; background: rgba(30,58,138,.22); top: -120px; right: -180px; }
-  .eyebrow { display: inline-block; font: 700 11px/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .16em; text-transform: uppercase; color: #38d6f0; background: rgba(34,211,238,.1); border: 1px solid rgba(34,211,238,.3); padding: 7px 11px; border-radius: 8px; }
-  h1 { font-size: clamp(30px, 5vw, 46px); line-height: 1.1; letter-spacing: -.02em; margin: 20px 0 14px; color: #fff; }
-  h1 .accent { color: #38d6f0; }
-  .lede { font-size: 20px; color: #b9c1cf; margin: 0 0 18px; }
-  .byline { font-size: 13px; color: #8a93a3; display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; border-top: 1px solid rgba(255,255,255,.07); border-bottom: 1px solid rgba(255,255,255,.07); padding: 14px 0; margin-bottom: 8px; }
-  article { padding: 26px 0 10px; }
-  article h2 { font-size: 25px; letter-spacing: -.01em; margin: 44px 0 12px; color: #fff; }
-  article h3 { font-size: 18px; margin: 28px 0 8px; color: #eef1f6; }
-  article p { color: #d2d8e2; }
-  article strong { color: #fff; }
-  .abstract { font-size: 16px; color: #c4ccd8; border-left: 3px solid #38d6f0; padding: 2px 0 2px 16px; margin: 24px 0; }
-  .abstract strong { color: #eef1f6; }
-  .callout { background: rgba(34,211,238,.06); border: 1px solid rgba(34,211,238,.22); border-radius: 14px; padding: 16px 18px; margin: 22px 0; font-size: 15px; color: #cfe9f2; }
-  .scope { background: rgba(245,158,11,.06); border: 1px solid rgba(245,158,11,.25); color: #f3dcb0; }
-  .keyfindings { background: rgba(34,211,238,.05); border: 1px solid rgba(34,211,238,.2); border-radius: 14px; padding: 16px 20px 18px; margin: 24px 0; }
-  .keyfindings .kf-title { font: 700 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .1em; text-transform: uppercase; color: #7fdbef; margin-bottom: 11px; }
-  .keyfindings ul { margin: 0; padding-left: 18px; }
-  .keyfindings li { color: #cfe9f2; margin: 7px 0; font-size: 15px; }
-  figure { margin: 30px 0; }
-  figure img { width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid rgba(255,255,255,.1); background: #0b0e13; }
-  figcaption { font-size: 13px; color: #8a93a3; margin-top: 9px; line-height: 1.55; }
-  table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 14.5px; }
-  th, td { text-align: left; padding: 11px 12px; border-bottom: 1px solid rgba(255,255,255,.08); vertical-align: top; }
-  th { color: #9aa3b2; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .05em; }
-  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0; }
-  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 18px; border-radius: 11px; font-weight: 600; font-size: 15px; }
-  .btn.primary { background: linear-gradient(135deg, #22d3ee, #2563eb); color: #04121a; }
-  .btn.ghost { border: 1px solid rgba(255,255,255,.16); color: #e6e9ef; }
-  .btn:hover { text-decoration: none; filter: brightness(1.08); }
-  .faq h3 { margin-top: 22px; }
-  footer.site { border-top: 1px solid rgba(255,255,255,.07); margin-top: 48px; padding: 26px 0 44px; color: #8a93a3; font-size: 13px; }
-  footer.site .wrap { display: flex; flex-wrap: wrap; gap: 14px 28px; justify-content: space-between; align-items: center; max-width: 980px; }
-  footer .links a { color: #aeb6c4; margin-right: 18px; }
+  a { color:var(--signal); text-decoration-color:rgba(102,214,200,.38); text-underline-offset:3px; }
+  a:hover { text-decoration-thickness:1px; }
+  ::selection { background:rgba(102,214,200,.22); color:white; }
+
+  .site-head {
+    position:sticky;
+    top:0;
+    z-index:80;
+    min-height:64px;
+    border-bottom:1px solid var(--line);
+    background:rgba(7,9,11,.94);
+    backdrop-filter:blur(16px);
+  }
+  .site-head-inner {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    width:min(100% - 32px,1440px);
+    min-height:64px;
+    margin:0 auto;
+  }
+  .brand {
+    display:flex;
+    align-items:center;
+    gap:11px;
+    color:var(--paper);
+    text-decoration:none;
+  }
+  .brand-mark {
+    display:grid;
+    place-items:center;
+    width:30px;
+    height:30px;
+    border:1px solid rgba(102,214,200,.36);
+    border-radius:8px;
+    color:var(--signal);
+    font:600 10px/1 "IBM Plex Mono",monospace;
+  }
+  .brand strong,.brand small { display:block; }
+  .brand strong { font-size:12px; letter-spacing:-.02em; }
+  .brand small {
+    margin-top:2px;
+    color:var(--muted-2);
+    font:500 8px/1 "IBM Plex Mono",monospace;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+  }
+  .head-action {
+    display:inline-flex;
+    align-items:center;
+    min-height:34px;
+    padding:0 12px;
+    border:1px solid var(--line-strong);
+    border-radius:8px;
+    color:#dfe6e8;
+    font-size:10px;
+    font-weight:600;
+    text-decoration:none;
+  }
+  .head-action:hover { border-color:rgba(102,214,200,.35); background:var(--signal-soft); }
+
+  .article-layout {
+    position:relative;
+    z-index:1;
+    display:grid;
+    grid-template-columns:220px minmax(0,820px);
+    gap:clamp(38px,5vw,84px);
+    width:min(100% - 40px,1180px);
+    margin:0 auto;
+    padding:54px 0 70px;
+  }
+  .reading-rail {
+    position:sticky;
+    top:94px;
+    align-self:start;
+    max-height:calc(100vh - 120px);
+    overflow:auto;
+    padding-right:18px;
+  }
+  .rail-title {
+    margin-bottom:14px;
+    color:#5f6b73;
+    font:500 9px/1 "IBM Plex Mono",monospace;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+  }
+  .reading-rail nav { display:flex; flex-direction:column; gap:2px; }
+  .reading-rail a {
+    display:grid;
+    grid-template-columns:24px minmax(0,1fr);
+    gap:8px;
+    padding:7px 8px;
+    color:#748089;
+    border-left:1px solid transparent;
+    font-size:9.5px;
+    line-height:1.45;
+    text-decoration:none;
+  }
+  .reading-rail a span {
+    color:#4f5a62;
+    font:500 8px/1.45 "IBM Plex Mono",monospace;
+  }
+  .reading-rail a:hover {
+    color:#d6dee1;
+    border-left-color:var(--signal);
+    background:rgba(255,255,255,.02);
+  }
+  .rail-proof {
+    margin-top:24px;
+    padding:14px 12px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    background:rgba(255,255,255,.022);
+  }
+  .rail-proof strong {
+    display:block;
+    margin-bottom:7px;
+    color:#dce4e7;
+    font-size:9px;
+  }
+  .rail-proof span {
+    display:block;
+    color:#68747c;
+    font:500 8px/1.65 "IBM Plex Mono",monospace;
+  }
+  .mobile-index { display:none; }
+
+  .document { min-width:0; }
+  .hero {
+    position:relative;
+    isolation:isolate;
+    overflow:hidden;
+    padding:clamp(30px,5vw,54px);
+    border:1px solid var(--line);
+    border-radius:16px;
+    background:rgba(17,22,27,.83);
+  }
+  .hero::before {
+    content:"";
+    position:absolute;
+    inset:-1px;
+    z-index:-1;
+    pointer-events:none;
+    border-radius:inherit;
+    background:
+      radial-gradient(circle at 90% 8%,rgba(102,214,200,.13),transparent 28%),
+      linear-gradient(120deg,transparent 0 74%,rgba(255,255,255,.035) 89%,transparent 100%);
+  }
+  .doc-type {
+    display:flex;
+    justify-content:space-between;
+    gap:18px;
+    padding-bottom:18px;
+    border-bottom:1px solid var(--line);
+    color:#68747c;
+    font:500 8.5px/1.5 "IBM Plex Mono",monospace;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  h1 {
+    max-width:760px;
+    margin:28px 0 18px;
+    color:#f7f9fa;
+    font-size:clamp(38px,6vw,68px);
+    line-height:1.02;
+    letter-spacing:-.055em;
+  }
+  h1 .accent { color:var(--signal); }
+  .lede {
+    max-width:720px;
+    margin:0;
+    color:#a2adb3;
+    font-size:clamp(15px,2vw,19px);
+    line-height:1.72;
+  }
+  .byline {
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 14px;
+    align-items:center;
+    margin-top:28px;
+    padding-top:17px;
+    border-top:1px solid var(--line);
+    color:#738087;
+    font-size:9.5px;
+  }
+  .byline strong { color:#dce4e7; }
+
+  article { padding-top:34px; }
+  article p,article li { color:#c5cdd1; }
+  article p { margin:0 0 20px; }
+  article strong { color:#f0f4f5; font-weight:650; }
+  article em { color:#d7dee1; }
+  article h2 {
+    scroll-margin-top:92px;
+    margin:60px 0 18px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+    color:#f3f6f7;
+    font-size:clamp(25px,3vw,34px);
+    line-height:1.18;
+    letter-spacing:-.04em;
+  }
+  article h3 {
+    margin:32px 0 10px;
+    color:#e3e9eb;
+    font-size:17px;
+    line-height:1.35;
+    letter-spacing:-.02em;
+  }
+  article ul { padding-left:20px; }
+  article li { margin:8px 0; }
+
+  .abstract {
+    margin:2px 0 28px;
+    padding:18px 20px;
+    border-left:2px solid var(--signal);
+    background:rgba(102,214,200,.045);
+    color:#bac4c8;
+    font-size:14px;
+  }
+  .keyfindings {
+    margin:28px 0 34px;
+    border-top:1px solid rgba(102,214,200,.24);
+    border-bottom:1px solid rgba(102,214,200,.24);
+    background:linear-gradient(90deg,rgba(102,214,200,.045),transparent 72%);
+    padding:18px 0 20px;
+  }
+  .kf-title {
+    margin-bottom:11px;
+    color:var(--signal);
+    font:600 9px/1 "IBM Plex Mono",monospace;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+  }
+  .keyfindings ul { margin:0; }
+  .keyfindings li { font-size:14px; }
+  .callout {
+    position:relative;
+    isolation:isolate;
+    margin:28px 0;
+    padding:18px 20px;
+    border:1px solid rgba(102,214,200,.18);
+    border-radius:11px;
+    background:rgba(102,214,200,.045);
+    color:#c7d8d6;
+    font-size:14px;
+  }
+  .callout::after {
+    content:"";
+    position:absolute;
+    inset:1px;
+    z-index:-1;
+    border-radius:inherit;
+    box-shadow:inset 0 0 32px rgba(0,0,0,.2);
+  }
+  .scope {
+    border-color:rgba(241,184,102,.22);
+    background:var(--warning-soft);
+    color:#ccb99e;
+  }
+  .scope strong,.scope a { color:#f3d9b2; }
+
+  figure { margin:34px 0 38px; }
+  figure img {
+    display:block;
+    width:100%;
+    height:auto;
+    border:1px solid var(--line-strong);
+    border-radius:12px;
+    background:#0b0e13;
+    box-shadow:0 18px 60px rgba(0,0,0,.22);
+  }
+  figcaption {
+    margin-top:10px;
+    padding-left:12px;
+    border-left:1px solid var(--line-strong);
+    color:#758189;
+    font-size:10px;
+    line-height:1.65;
+  }
+
+  .table-wrap { width:100%; overflow-x:auto; margin:24px 0 30px; }
+  table { width:100%; min-width:620px; border-collapse:collapse; font-size:12px; }
+  th,td { padding:13px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+  th {
+    color:#77838b;
+    font:600 8.5px/1.4 "IBM Plex Mono",monospace;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  td { color:#b7c1c5; }
+  td strong { color:#edf2f3; }
+
+  .cta {
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:30px 0 36px;
+  }
+  .btn {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:42px;
+    padding:0 16px;
+    border-radius:9px;
+    font-size:11px;
+    font-weight:650;
+    text-decoration:none;
+  }
+  .btn.primary { background:var(--signal); color:#07100f; border:1px solid var(--signal); }
+  .btn.ghost { color:#dce4e7; border:1px solid var(--line-strong); background:rgba(255,255,255,.02); }
+  .btn:hover { filter:brightness(1.05); }
+
+  .faq h3 { margin-top:28px; }
+  .article-end {
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:24px;
+    align-items:end;
+    margin-top:56px;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+    color:#6f7b82;
+    font-size:9.5px;
+  }
+  .article-end strong { color:#cbd4d7; }
+  .end-links { display:flex; flex-direction:column; align-items:flex-end; gap:5px; }
+  .end-links a { color:#78858c; text-decoration:none; }
+  .end-links a:hover { color:#dce4e7; }
+
+  :focus-visible { outline:2px solid rgba(102,214,200,.72); outline-offset:3px; }
+
+  @media (max-width:900px) {
+    .article-layout { grid-template-columns:1fr; width:min(100% - 28px,820px); padding-top:28px; }
+    .reading-rail { display:none; }
+    .mobile-index {
+      display:block;
+      margin:18px 0 0;
+      border:1px solid var(--line);
+      border-radius:9px;
+      background:rgba(255,255,255,.02);
+    }
+    .mobile-index summary {
+      cursor:pointer;
+      padding:11px 13px;
+      color:#89959d;
+      font:500 9px/1 "IBM Plex Mono",monospace;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+    .mobile-index nav { display:flex; flex-direction:column; padding:0 10px 10px; }
+    .mobile-index a { padding:7px 5px; color:#8c989f; font-size:10px; text-decoration:none; }
+  }
+  @media (max-width:620px) {
+    .site-head-inner { width:calc(100% - 24px); }
+    .article-layout { width:calc(100% - 24px); }
+    .hero { padding:26px 20px; border-radius:13px; }
+    .doc-type { flex-direction:column; gap:5px; }
+    h1 { font-size:clamp(36px,12vw,54px); }
+    .lede { font-size:14px; }
+    article { font-size:14px; }
+    article h2 { margin-top:48px; font-size:26px; }
+    .abstract,.callout { padding:15px; }
+    .article-end { grid-template-columns:1fr; }
+    .end-links { align-items:flex-start; }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    *,*::before,*::after { scroll-behavior:auto!important; transition-duration:.001ms!important; animation-duration:.001ms!important; animation-iteration-count:1!important; }
+  }
 </style>
 </head>
 <body>
 
-<header class="site">
-  <div class="wrap">
-    <a class="brand" href="/"><span class="dot"></span> Watermark Stress Test</a>
-    <nav class="nav">
-      <a href="/">Open the lab</a>
-      <a href="https://kineticgain.com/" target="_blank" rel="noreferrer">Kinetic Gain</a>
-    </nav>
+<header class="site-head">
+  <div class="site-head-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark">KG</span>
+      <span><strong>Provenance Lab</strong><small>Kinetic Gain</small></span>
+    </a>
+    <a class="head-action" href="/">Open the interactive lab</a>
   </div>
 </header>
 
-<div class="hero">
-  <div class="wrap">
-    <span class="eyebrow">White Paper · Content Provenance</span>
-    <h1>Why AI watermarks break — and the case for <span class="accent">Content Credentials</span></h1>
-    <p class="lede">Pixel and token watermarks survive a screenshot. They do not survive someone who is trying. Here is where the robustness ceiling actually is, and what auditable provenance looks like instead.</p>
-    <div class="byline">
-      <span>By <strong style="color:#e6e9ef">Miz Causevic</strong> · Platform &amp; Security Engineering Lead</span>
-      <span>·</span>
-      <span>Published June 6, 2026</span>
-      <span>·</span>
-      <span>~9 min read</span>
-      <span>·</span>
-      <a href="/">Try the interactive lab →</a>
+<div class="article-layout">
+  <aside class="reading-rail" aria-label="Article contents">
+    <div class="rail-title">Reading index</div>
+    <nav>
+      <a href="#how-watermarking-works"><span>01</span>How watermarking works</a>
+      <a href="#why-fragile"><span>02</span>Why it is fragile</a>
+      <a href="#trust-decisions"><span>03</span>Trust decisions</a>
+      <a href="#durable-fix"><span>04</span>The durable fix</a>
+      <a href="#see-it"><span>05</span>See it yourself</a>
+      <a href="#faq"><span>06</span>FAQ</a>
+      <a href="#related"><span>07</span>Related work</a>
+    </nav>
+    <div class="rail-proof">
+      <strong>Evidence posture</strong>
+      <span>Watermark: probabilistic</span>
+      <span>C2PA: tamper-evident</span>
     </div>
-  </div>
+  </aside>
+
+  <main class="document">
+    <section class="hero">
+      <div class="doc-type"><span>White paper · Content provenance</span><span>Published June 6, 2026</span></div>
+      <h1>Why AI watermarks break, and the case for <span class="accent">Content Credentials</span></h1>
+      <p class="lede">Pixel and token watermarks survive a screenshot. They do not survive someone who is trying. Here is where the robustness ceiling actually is, and what auditable provenance looks like instead.</p>
+      <div class="byline">
+        <span>By <strong>Miz Causevic</strong> · Platform &amp; Security Engineering Lead</span>
+        <span>~9 min read</span>
+        <a href="/">Try the interactive lab</a>
+      </div>
+    </section>
+
+    <details class="mobile-index">
+      <summary>Reading index</summary>
+      <nav>
+        <a href="#how-watermarking-works">01 · How watermarking works</a>
+        <a href="#why-fragile">02 · Why it is fragile</a>
+        <a href="#trust-decisions">03 · Trust decisions</a>
+        <a href="#durable-fix">04 · The durable fix</a>
+        <a href="#see-it">05 · See it yourself</a>
+        <a href="#faq">06 · FAQ</a>
+        <a href="#related">07 · Related work</a>
+      </nav>
+    </details>
+
+    <article>
+      <p class="abstract"><strong>Abstract.</strong> AI content watermarking, the family Google DeepMind's <strong>SynthID</strong> belongs to, hides a recoverable signal inside generated images, text, and audio. This white paper shows, with a hands-on browser lab, that such <em>in-band</em> signals are fragile by construction: a frequency-notch filter, a denoise pass, a re-encode, or a paraphrase attenuates the mark while the asset still looks and reads fine, and the failure is silent. It argues that durable provenance must instead be <strong>cryptographically signed</strong> (C2PA / Content Credentials), where tampering breaks a signature visibly and "no provenance" becomes an explicit, auditable state.</p>
+
+      <div class="keyfindings">
+        <div class="kf-title">Key findings</div>
+        <ul>
+          <li>In the lab's synthetic carrier, a single frequency-notch pass can drop detection from ~100% to low single digits while <strong>PSNR stays above ~40 dB</strong>. The removal costs nothing visible.</li>
+          <li>The same fragility holds across modalities: a text watermark's Z-score resets toward chance under paraphrasing; an audio carrier reading 100% falls to ~1% after one low-pass.</li>
+          <li>A stripped watermark is <strong>silent</strong>. Absence proves nothing, so a low score never means "human-made."</li>
+          <li>A C2PA signature does the opposite: after a simple re-save, the watermark still reads ~80% while the signature reads <strong>INVALID</strong>. Tamper-evidence by design.</li>
+        </ul>
+      </div>
+
+      <p>As AI-generated media became indistinguishable from the real thing, the obvious defence was to mark the output: hide an invisible, machine-recoverable signal in every generated image, audio clip, or paragraph so a detector could later say "a model made this." Google DeepMind's <strong>SynthID</strong> is the best-known example of this family. The idea is good, and the engineering is genuinely impressive. But it carries a structural limit that anyone relying on it for trust decisions needs to understand: <strong>a signal hidden inside the content can be weakened by edits that target where it lives.</strong></p>
+
+      <p>This paper explains the mechanism in plain terms, shows the four edit classes that attenuate it across image, text, and audio, and argues for the layer that doesn't share the weakness: cryptographically signed provenance, standardised as <a href="https://c2pa.org/" target="_blank" rel="noreferrer">C2PA</a> and shipped to users as <a href="https://contentcredentials.org/" target="_blank" rel="noreferrer">Content Credentials</a>.</p>
+
+      <div class="callout scope">
+        <strong>Scope note.</strong> The companion <a href="/">Watermark Stress Test</a> demonstrates these effects on a <em>synthetic</em> watermark it injects itself, entirely in your browser. It does not detect or remove SynthID or any production system. The goal is to teach the robustness lesson, not to defeat anyone's watermark.
+      </div>
+
+      <figure>
+        <img src="img/01-pipeline-run.webp" width="1400" height="664" loading="lazy" decoding="async" alt="A node-based perturbation pipeline in the Watermark Stress Test driving a synthetic AI watermark's carrier-correlation score down to 0% after notch filtering, quantization, and bilateral denoising." />
+        <figcaption>The perturbation pipeline chains four standard edits and tracks the lab's synthetic carrier correlation live. It collapses from 100% to <strong>0%</strong>, in the browser, with no visible damage to the image.</figcaption>
+      </figure>
+
+      <h2 id="how-watermarking-works">How content watermarking works</h2>
+
+      <h3>Images: a carrier hidden in the frequencies</h3>
+      <p>An image watermark modulates the picture so the visible result is unchanged but a hidden pattern, a <em>carrier</em>, is present in the frequency coefficients or the model's latent representation. A detector holding a secret key correlates the image against the expected carrier and returns a <strong>confidence score</strong>. Crucially, it returns a probability, not a yes/no certificate. The carrier is engineered to be redundant and resilient so it survives JPEG compression, resizing, and colour tweaks.</p>
+
+      <figure>
+        <img src="img/02-image-lab.webp" width="1400" height="664" loading="lazy" decoding="async" alt="The Watermark Stress Test image lab: a carrier-detection scanner reads 99% beside notch-filter, jitter, quantize, and denoise attack modules and live PSNR/SSIM metrics." />
+        <figcaption>The image lab: inject a synthetic carrier (scanner at 99%), then attack it with real DSP. PSNR and SSIM stay high while detection falls. The edit that removes the mark is the edit that costs nothing.</figcaption>
+      </figure>
+
+      <h3>Text: a bias in word choice</h3>
+      <p>Text watermarks work differently but rhyme. During generation the model splits its vocabulary into "favoured" and "neutral" tokens based on a hash of the preceding words, and nudges sampling toward favoured tokens. Watermarked text then contains a statistically improbable share of favoured tokens, detectable with a Z- or G-test over enough words. Again: a statistical signal, recoverable only while the text is intact.</p>
+
+      <figure>
+        <img src="img/03-text-lab.webp" width="1400" height="664" loading="lazy" decoding="async" alt="A SynthID-style text token sandbox highlighting favoured tokens with a Stego Z-score of 6.88, alongside synonym, homoglyph, and rephrase attack tactics." />
+        <figcaption>The text lab, a SynthID-<em>style</em> sandbox, not a real SynthID classifier. The Z-score reads 6.88 when the text is untouched; synonym swaps and homoglyphs reset it toward chance.</figcaption>
+      </figure>
+
+      <h3>Audio: the same story in sound</h3>
+      <p>Audio watermarks embed an inaudible, spread-spectrum carrier keyed by a secret chip sequence, recovered with a matched filter. It is the same bargain as images and text: a low-amplitude signal riding inside ordinary content. In the lab, watermarked audio reads 100%, and a single routine low-pass at 6 kHz, the kind any re-encode applies, drops it to roughly 1%.</p>
+
+      <figure>
+        <img src="img/06-audio-lab.webp" width="1400" height="664" loading="lazy" decoding="async" alt="The audio watermark lab showing clean audio at 0%, watermarked audio at 100%, and post-low-pass audio at 1% matched-filter detection." />
+        <figcaption>The audio lab: a spread-spectrum carrier reads 100% until one low-pass strips it to 1%. The robustness ceiling is identical across modalities.</figcaption>
+      </figure>
+
+      <h2 id="why-fragile">Why it is fragile: four ordinary edits</h2>
+      <p>Robust does not mean unconditional. The same property that makes a watermark invisible, a low-amplitude signal riding inside ordinary content, is what makes it removable. In the lab you can watch each of these drive a synthetic carrier's detection score toward zero:</p>
+
+      <div class="table-wrap"><table>
+        <thead><tr><th>Edit class</th><th>What it does</th><th>Why the carrier fades</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Frequency notch</strong></td><td>Attenuates a narrow radial band of the FFT spectrum</td><td>If the carrier sits in a predictable band, that band is filterable with little visible cost</td></tr>
+          <tr><td><strong>Noise jitter</strong></td><td>Adds low-amplitude broadband noise</td><td>Scrambles the fine pixel correlations a carrier depends on</td></tr>
+          <tr><td><strong>Re-encode / quantize</strong></td><td>Drops bit depth, downsamples, re-saves</td><td>Clips the micro-variations to the nearest grid step, often as an accidental side effect</td></tr>
+          <tr><td><strong>Denoise</strong></td><td>Edge-preserving smoothing (bilateral / NLM)</td><td>Treats the carrier as sensor noise and wipes it while keeping detail crisp</td></tr>
+        </tbody>
+      </table></div>
+
+      <p>For text the analogues are paraphrasing, synonym substitution, back-translation, and character-level swaps (homoglyphs, zero-width characters). Each breaks the context-hash chain and resets the favoured-token bias toward chance. The unifying theme: <strong>the mark is strongest exactly when the content is untouched, and weakest the moment anyone edits it</strong>, which is most of the real internet.</p>
+
+      <h2 id="trust-decisions">What this means for trust decisions</h2>
+      <p>Two consequences follow directly, and both matter for anyone building governance, trust &amp; safety, or content-authenticity workflows:</p>
+      <ul>
+        <li><strong>A low score is not proof of human authorship.</strong> The carrier may simply have faded. Watermark absence is evidence of nothing.</li>
+        <li><strong>A stripped mark is silent.</strong> Nothing in the asset announces that a watermark was removed. The failure mode is invisible, the worst kind for an audit.</li>
+      </ul>
+      <p>This is the structural ceiling of any <em>in-band</em> signal. It does not make watermarking useless. As a corroborating signal at population scale it is valuable. It makes watermarking insufficient as the <em>foundation</em> of a provenance claim. Regulators are already circling this gap: the <strong>EU AI Act's Article 50</strong> transparency duties push synthetic-content disclosure toward "machine-readable and reliable," and a watermark-only answer does not survive the question "what does absence prove?" <em>(General information, not legal advice.)</em></p>
+
+      <h2 id="durable-fix">The durable fix: sign provenance, do not hide it</h2>
+      <p>The alternative inverts the design. Instead of hiding a signal and hoping it survives, <strong>C2PA / Content Credentials</strong> attach cryptographically signed metadata: who created the asset, with what tool, through what edits, and bind it to the content with a tamper-evident manifest. The properties are the mirror image of watermarking's weaknesses:</p>
+
+      <figure>
+        <img src="img/05-credentials-tampered.webp" width="1400" height="664" loading="lazy" decoding="async" alt="The credentials lab after a JPEG re-save: the in-band watermark still reads 80% with no alarm, while the C2PA-style signature reads INVALID — asset altered after signing." />
+        <figcaption>The thesis in one frame. After a simple JPEG re-save, the in-band watermark still reads <strong>80%, no alarm, silent</strong>, but the C2PA-style signature flips to <strong>INVALID, asset altered after signing</strong>. One signal fails quietly; the other fails loudly and auditably.</figcaption>
+      </figure>
+
+      <div class="table-wrap"><table>
+        <thead><tr><th></th><th>In-band watermark</th><th>Content Credentials (C2PA)</th></tr></thead>
+        <tbody>
+          <tr><td>Detection result</td><td>Probability (can fade)</td><td>Valid / invalid / absent (explicit)</td></tr>
+          <tr><td>Tampering</td><td>Silent attenuation</td><td>Signature fails visibly</td></tr>
+          <tr><td>"No signal" means</td><td>Nothing provable</td><td>No verifiable provenance, a checkable state</td></tr>
+          <tr><td>Best role</td><td>Corroborating signal</td><td>Foundation of the claim</td></tr>
+        </tbody>
+      </table></div>
+
+      <p>A broken or missing credential is an <em>explicit, auditable</em> state, the difference between "we couldn't detect a watermark" and "this asset carries no valid provenance." That auditability is what governance actually needs.</p>
+
+      <div class="callout">
+        <strong>The pragmatic posture is layered.</strong> Content Credentials for verifiable origin, watermarking as one corroborating signal, and disclosure policy on top. No single layer carries the load, and the watermark layer least of all. Build for defence in depth, and treat any "we watermark it" claim as one input, not a guarantee.
+      </div>
+
+      <h2 id="see-it">See it for yourself</h2>
+      <p>Reading that watermarks are fragile is one thing; watching a detection gauge fall to zero under a notch filter you control is another. The lab lets you inject a synthetic carrier, see it in the FFT, and attenuate it with real signal-processing filters, plus a text sandbox that resets a Z-score with synonym and character edits, an audio lab, and a Web-Crypto credential demo that signs and verifies with ECDSA P-256.</p>
+
+      <div class="cta">
+        <a class="btn primary" href="/">Open the Watermark Stress Test</a>
+        <a class="btn ghost" href="https://kineticgain.com/trust/" target="_blank" rel="noreferrer">Kinetic Gain Trust Pack</a>
+      </div>
+
+      <h2 id="faq">Frequently asked questions</h2>
+      <div class="faq">
+        <h3>Are AI image and text watermarks reliable for proving origin?</h3>
+        <p>They're robust against many casual transformations but fragile against targeted edits: frequency filtering, denoising, re-encoding, rescaling, paraphrasing, character substitution. Detection returns a probability, not a certificate, so a low or absent score never proves content is human-made. Treat watermarking as one corroborating signal, not proof.</p>
+        <h3>What's the difference between watermarking and Content Credentials?</h3>
+        <p>Watermarking hides a recoverable signal inside the media; if it fades or is stripped, the loss is silent. C2PA attaches cryptographically signed provenance to the asset, so tampering breaks the signature visibly. One is probabilistic and in-band; the other is auditable and tamper-evident.</p>
+        <h3>Does watermarking satisfy AI transparency rules like the EU AI Act?</h3>
+        <p>Article 50 pushes toward machine-readable disclosure of synthetic content. A watermark-only answer is brittle because the absence of a watermark proves nothing, the gap signed Content Credentials are designed to close. This is general information, not legal advice.</p>
+        <h3>Does the lab remove real watermarks like SynthID?</h3>
+        <p>No. It operates only on a synthetic watermark it injects itself, in your browser. The robustness point is general: in-band watermarks can be attenuated by ordinary editing, which is why provenance shouldn't depend on them alone.</p>
+      </div>
+
+      <h2 id="related">Related work</h2>
+      <p>This project concerns <strong>content provenance</strong> watermarking, marks embedded in generated media (the SynthID family). It is independent of, and not derived from, the <a href="https://github.com/dnn-security/Watermark-Robustness-Toolbox" target="_blank" rel="noreferrer">Watermark-Robustness-Toolbox (WRT)</a> by Lukas, Jiang, Li &amp; Kerschbaum, which benchmarks the robustness of <em>DNN model-weight</em> watermarks, used to prove ownership of trained neural networks, a distinct subfield. See their IEEE S&amp;P 2022 paper, <em>"SoK: How Robust is Deep Neural Network Image Classification Watermarking?"</em> Different domain, different stack, no shared code.</p>
+    </article>
+
+    <footer class="article-end">
+      <div>Built by <strong>Miz Causevic</strong> as an educational provenance project under <a href="https://kineticgain.com/" target="_blank" rel="noreferrer">Kinetic Gain</a>.</div>
+      <div class="end-links">
+        <a href="/">The lab</a>
+        <a href="https://contentcredentials.org/" target="_blank" rel="noreferrer">Content Credentials</a>
+        <a href="https://github.com/mizcausevic-dev/watermark-stress-test" target="_blank" rel="noreferrer">Source</a>
+      </div>
+    </footer>
+  </main>
 </div>
-
-<div class="wrap">
-<article>
-
-  <p class="abstract"><strong>Abstract.</strong> AI content watermarking — the family Google DeepMind's <strong>SynthID</strong> belongs to — hides a recoverable signal inside generated images, text, and audio. This white paper shows, with a hands-on browser lab, that such <em>in-band</em> signals are fragile by construction: a frequency-notch filter, a denoise pass, a re-encode, or a paraphrase attenuates the mark while the asset still looks and reads fine — and the failure is silent. It argues that durable provenance must instead be <strong>cryptographically signed</strong> (C2PA / Content Credentials), where tampering breaks a signature visibly and "no provenance" becomes an explicit, auditable state.</p>
-
-  <div class="keyfindings">
-    <div class="kf-title">Key findings</div>
-    <ul>
-      <li>In the lab's synthetic carrier, a single frequency-notch pass can drop detection from ~100% to low single digits while <strong>PSNR stays above ~40 dB</strong> — the removal costs nothing visible.</li>
-      <li>The same fragility holds across modalities: a text watermark's Z-score resets toward chance under paraphrasing; an audio carrier reading 100% falls to ~1% after one low-pass.</li>
-      <li>A stripped watermark is <strong>silent</strong> — absence proves nothing, so a low score never means "human-made."</li>
-      <li>A C2PA signature does the opposite: after a simple re-save, the watermark still reads ~80% while the signature reads <strong>INVALID</strong> — tamper-evidence by design.</li>
-    </ul>
-  </div>
-
-  <p>As AI-generated media became indistinguishable from the real thing, the obvious defence was to mark the output: hide an invisible, machine-recoverable signal in every generated image, audio clip, or paragraph so a detector could later say "a model made this." Google DeepMind's <strong>SynthID</strong> is the best-known example of this family. The idea is good, and the engineering is genuinely impressive. But it carries a structural limit that anyone relying on it for trust decisions needs to understand: <strong>a signal hidden inside the content can be weakened by edits that target where it lives.</strong></p>
-
-  <p>This paper explains the mechanism in plain terms, shows the four edit classes that attenuate it across image, text, and audio, and argues for the layer that doesn't share the weakness — cryptographically signed provenance, standardised as <a href="https://c2pa.org/" target="_blank" rel="noreferrer">C2PA</a> and shipped to users as <a href="https://contentcredentials.org/" target="_blank" rel="noreferrer">Content Credentials</a>.</p>
-
-  <div class="callout scope">
-    <strong>Scope note.</strong> The companion <a href="/">Watermark Stress Test</a> demonstrates these effects on a <em>synthetic</em> watermark it injects itself, entirely in your browser. It does not detect or remove SynthID or any production system. The goal is to teach the robustness lesson, not to defeat anyone's watermark.
-  </div>
-
-  <figure>
-    <img src="img/01-pipeline-run.webp" width="1400" height="664" loading="lazy" decoding="async"
-         alt="A node-based perturbation pipeline in the Watermark Stress Test driving a synthetic AI watermark's carrier-correlation score down to 0% after notch filtering, quantization, and bilateral denoising." />
-    <figcaption>The perturbation pipeline chains four standard edits and tracks the lab's synthetic carrier correlation live — it collapses from 100% to <strong>0%</strong>, in the browser, with no visible damage to the image.</figcaption>
-  </figure>
-
-  <h2>How content watermarking works</h2>
-
-  <h3>Images: a carrier hidden in the frequencies</h3>
-  <p>An image watermark modulates the picture so the visible result is unchanged but a hidden pattern — a <em>carrier</em> — is present in the frequency coefficients or the model's latent representation. A detector holding a secret key correlates the image against the expected carrier and returns a <strong>confidence score</strong>. Crucially, it returns a probability, not a yes/no certificate. The carrier is engineered to be redundant and resilient so it survives JPEG compression, resizing, and colour tweaks.</p>
-
-  <figure>
-    <img src="img/02-image-lab.webp" width="1400" height="664" loading="lazy" decoding="async"
-         alt="The Watermark Stress Test image lab: a carrier-detection scanner reads 99% beside notch-filter, jitter, quantize, and denoise attack modules and live PSNR/SSIM metrics." />
-    <figcaption>The image lab: inject a synthetic carrier (scanner at 99%), then attack it with real DSP. PSNR and SSIM stay high while detection falls — the edit that removes the mark is the edit that costs nothing.</figcaption>
-  </figure>
-
-  <h3>Text: a bias in word choice</h3>
-  <p>Text watermarks work differently but rhyme. During generation the model splits its vocabulary into "favoured" and "neutral" tokens based on a hash of the preceding words, and nudges sampling toward favoured tokens. Watermarked text then contains a statistically improbable share of favoured tokens, detectable with a Z- or G-test over enough words. Again: a statistical signal, recoverable only while the text is intact.</p>
-
-  <figure>
-    <img src="img/03-text-lab.webp" width="1400" height="664" loading="lazy" decoding="async"
-         alt="A SynthID-style text token sandbox highlighting favoured tokens with a Stego Z-score of 6.88, alongside synonym, homoglyph, and rephrase attack tactics." />
-    <figcaption>The text lab — a SynthID-<em>style</em> sandbox, not a real SynthID classifier. The Z-score reads 6.88 when the text is untouched; synonym swaps and homoglyphs reset it toward chance.</figcaption>
-  </figure>
-
-  <h3>Audio: the same story in sound</h3>
-  <p>Audio watermarks embed an inaudible, spread-spectrum carrier keyed by a secret chip sequence, recovered with a matched filter. It is the same bargain as images and text: a low-amplitude signal riding inside ordinary content. In the lab, watermarked audio reads 100% — and a single routine low-pass at 6 kHz, the kind any re-encode applies, drops it to roughly 1%.</p>
-
-  <figure>
-    <img src="img/06-audio-lab.webp" width="1400" height="664" loading="lazy" decoding="async"
-         alt="The audio watermark lab showing clean audio at 0%, watermarked audio at 100%, and post-low-pass audio at 1% matched-filter detection." />
-    <figcaption>The audio lab: a spread-spectrum carrier reads 100% — until one low-pass strips it to 1%. The robustness ceiling is identical across modalities.</figcaption>
-  </figure>
-
-  <h2>Why it's fragile: four ordinary edits</h2>
-  <p>Robust does not mean unconditional. The same property that makes a watermark invisible — it's a low-amplitude signal riding inside ordinary content — is what makes it removable. In the lab you can watch each of these drive a synthetic carrier's detection score toward zero:</p>
-
-  <table>
-    <thead><tr><th>Edit class</th><th>What it does</th><th>Why the carrier fades</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Frequency notch</strong></td><td>Attenuates a narrow radial band of the FFT spectrum</td><td>If the carrier sits in a predictable band, that band is filterable with little visible cost</td></tr>
-      <tr><td><strong>Noise jitter</strong></td><td>Adds low-amplitude broadband noise</td><td>Scrambles the fine pixel correlations a carrier depends on</td></tr>
-      <tr><td><strong>Re-encode / quantize</strong></td><td>Drops bit depth, downsamples, re-saves</td><td>Clips the micro-variations to the nearest grid step — often as an accidental side effect</td></tr>
-      <tr><td><strong>Denoise</strong></td><td>Edge-preserving smoothing (bilateral / NLM)</td><td>Treats the carrier as sensor noise and wipes it while keeping detail crisp</td></tr>
-    </tbody>
-  </table>
-
-  <p>For text the analogues are paraphrasing, synonym substitution, back-translation, and character-level swaps (homoglyphs, zero-width characters). Each breaks the context-hash chain and resets the favoured-token bias toward chance. The unifying theme: <strong>the mark is strongest exactly when the content is untouched, and weakest the moment anyone edits it</strong> — which is most of the real internet.</p>
-
-  <h2>What this means for trust decisions</h2>
-  <p>Two consequences follow directly, and both matter for anyone building governance, trust &amp; safety, or content-authenticity workflows:</p>
-  <ul>
-    <li><strong>A low score is not proof of human authorship.</strong> The carrier may simply have faded. Watermark absence is evidence of nothing.</li>
-    <li><strong>A stripped mark is silent.</strong> Nothing in the asset announces that a watermark was removed. The failure mode is invisible — the worst kind for an audit.</li>
-  </ul>
-  <p>This is the structural ceiling of any <em>in-band</em> signal. It does not make watermarking useless — as a corroborating signal at population scale it is valuable. It makes watermarking insufficient as the <em>foundation</em> of a provenance claim. Regulators are already circling this gap: the <strong>EU AI Act's Article 50</strong> transparency duties push synthetic-content disclosure toward "machine-readable and reliable," and a watermark-only answer does not survive the question "what does absence prove?" <em>(General information, not legal advice.)</em></p>
-
-  <h2>The durable fix: sign provenance, don't hide it</h2>
-  <p>The alternative inverts the design. Instead of hiding a signal and hoping it survives, <strong>C2PA / Content Credentials</strong> attach cryptographically signed metadata — who created the asset, with what tool, through what edits — and bind it to the content with a tamper-evident manifest. The properties are the mirror image of watermarking's weaknesses:</p>
-
-  <figure>
-    <img src="img/05-credentials-tampered.webp" width="1400" height="664" loading="lazy" decoding="async"
-         alt="The credentials lab after a JPEG re-save: the in-band watermark still reads 80% with no alarm, while the C2PA-style signature reads INVALID — asset altered after signing." />
-    <figcaption>The thesis in one frame. After a simple JPEG re-save, the in-band watermark still reads <strong>80% — no alarm, silent</strong>, but the C2PA-style signature flips to <strong>✗ INVALID — asset altered after signing</strong>. One signal fails quietly; the other fails loudly and auditably.</figcaption>
-  </figure>
-
-  <table>
-    <thead><tr><th></th><th>In-band watermark</th><th>Content Credentials (C2PA)</th></tr></thead>
-    <tbody>
-      <tr><td>Detection result</td><td>Probability (can fade)</td><td>Valid / invalid / absent (explicit)</td></tr>
-      <tr><td>Tampering</td><td>Silent attenuation</td><td>Signature fails — visibly</td></tr>
-      <tr><td>"No signal" means</td><td>Nothing provable</td><td>No verifiable provenance — a checkable state</td></tr>
-      <tr><td>Best role</td><td>Corroborating signal</td><td>Foundation of the claim</td></tr>
-    </tbody>
-  </table>
-
-  <p>A broken or missing credential is an <em>explicit, auditable</em> state — the difference between "we couldn't detect a watermark" and "this asset carries no valid provenance." That auditability is what governance actually needs.</p>
-
-  <div class="callout">
-    <strong>The pragmatic posture is layered.</strong> Content Credentials for verifiable origin, watermarking as one corroborating signal, and disclosure policy on top. No single layer carries the load — and the watermark layer least of all. Build for defence in depth, and treat any "we watermark it" claim as one input, not a guarantee.
-  </div>
-
-  <h2>See it for yourself</h2>
-  <p>Reading that watermarks are fragile is one thing; watching a detection gauge fall to zero under a notch filter you control is another. The lab lets you inject a synthetic carrier, see it in the FFT, and attenuate it with real signal-processing filters — plus a text sandbox that resets a Z-score with synonym and character edits, an audio lab, and a Web-Crypto credential demo that signs and verifies with ECDSA P-256.</p>
-
-  <div class="cta">
-    <a class="btn primary" href="/">Open the Watermark Stress Test →</a>
-    <a class="btn ghost" href="https://kineticgain.com/trust/" target="_blank" rel="noreferrer">Kinetic Gain Trust Pack</a>
-  </div>
-
-  <h2 class="faq">Frequently asked questions</h2>
-  <div class="faq">
-    <h3>Are AI image and text watermarks reliable for proving origin?</h3>
-    <p>They're robust against many casual transformations but fragile against targeted edits — frequency filtering, denoising, re-encoding, rescaling, paraphrasing, character substitution. Detection returns a probability, not a certificate, so a low or absent score never proves content is human-made. Treat watermarking as one corroborating signal, not proof.</p>
-    <h3>What's the difference between watermarking and Content Credentials?</h3>
-    <p>Watermarking hides a recoverable signal inside the media; if it fades or is stripped, the loss is silent. C2PA attaches cryptographically signed provenance to the asset, so tampering breaks the signature visibly. One is probabilistic and in-band; the other is auditable and tamper-evident.</p>
-    <h3>Does watermarking satisfy AI transparency rules like the EU AI Act?</h3>
-    <p>Article 50 pushes toward machine-readable disclosure of synthetic content. A watermark-only answer is brittle because the absence of a watermark proves nothing — the gap signed Content Credentials are designed to close. This is general information, not legal advice.</p>
-    <h3>Does the lab remove real watermarks like SynthID?</h3>
-    <p>No. It operates only on a synthetic watermark it injects itself, in your browser. The robustness point is general: in-band watermarks can be attenuated by ordinary editing, which is why provenance shouldn't depend on them alone.</p>
-  </div>
-
-  <h2>Related work</h2>
-  <p>This project concerns <strong>content provenance</strong> watermarking — marks embedded in generated media (the SynthID family). It is independent of, and not derived from, the <a href="https://github.com/dnn-security/Watermark-Robustness-Toolbox" target="_blank" rel="noreferrer">Watermark-Robustness-Toolbox (WRT)</a> by Lukas, Jiang, Li &amp; Kerschbaum, which benchmarks the robustness of <em>DNN model-weight</em> watermarks — used to prove ownership of trained neural networks, a distinct subfield. See their IEEE S&amp;P 2022 paper, <em>"SoK: How Robust is Deep Neural Network Image Classification Watermarking?"</em> Different domain, different stack, no shared code.</p>
-
-</article>
-</div>
-
-<footer class="site">
-  <div class="wrap">
-    <div>Built by <strong style="color:#cdd4df">Miz Causevic</strong> — an educational provenance project under <a href="https://kineticgain.com/" target="_blank" rel="noreferrer">Kinetic Gain</a>.</div>
-    <div class="links">
-      <a href="/">The lab</a>
-      <a href="https://contentcredentials.org/" target="_blank" rel="noreferrer">C2PA</a>
-      <a href="https://www.linkedin.com/in/mirzacausevic" target="_blank" rel="noreferrer">LinkedIn</a>
-      <a href="https://github.com/mizcausevic-dev/watermark-stress-test" target="_blank" rel="noreferrer">Source</a>
-    </div>
-  </div>
-</footer>
 
 </body>
 </html>
