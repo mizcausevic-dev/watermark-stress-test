@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0D0F13" />
+    <meta name="theme-color" content="#070910" />
 
     <!-- Favicon: the Signal Seal (brand mark) -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -105,9 +105,30 @@
       ]
     }
     </script>
+    <style>
+      body { background: #070910; color: #e6e9ef; }
+      #ssr-hero { max-width: 760px; margin: 0 auto; padding: 14vh 24px 10vh; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+      #ssr-hero .eb { font: 600 12px/1 ui-monospace, monospace; letter-spacing: .16em; text-transform: uppercase; color: #00e5ff; margin: 0 0 14px; }
+      #ssr-hero h1 { font-size: clamp(30px, 5vw, 44px); line-height: 1.12; letter-spacing: -.02em; color: #fff; margin: 0 0 16px; }
+      #ssr-hero p { color: #b4c0ce; font-size: 17px; line-height: 1.6; margin: 0 0 14px; }
+      #ssr-hero a { color: #00e5ff; text-decoration: none; }
+      #ssr-hero .labs { color: #8593a4; font-size: 14.5px; }
+      #ssr-hero .load { color: #5b6675; font-size: 13px; font-family: ui-monospace, monospace; margin-top: 22px; }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <!-- Static crawlable hero: real body prose for non-JS crawlers and a clean
+         pre-hydration view. React (createRoot) replaces #root on mount. -->
+    <div id="root">
+      <div id="ssr-hero">
+        <p class="eb">Educational simulation · Content provenance</p>
+        <h1>Why hidden watermarks break — and what actually proves origin</h1>
+        <p>The <strong>Watermark Stress Test</strong> is an interactive, in-browser lab that shows why AI content watermarks — the steganographic approach used by systems like Google SynthID — are fragile against ordinary edits, and why durable provenance needs cryptographically signed Content Credentials (C2PA).</p>
+        <p>It injects its own synthetic watermark and analyses it entirely in your browser. It does not detect, contain, or remove Google SynthID or any production watermark, and nothing you load is uploaded.</p>
+        <p class="labs">Six hands-on labs — Image, Text, Audio, Analysis, Credentials, and a live Perturbation Pipeline — plus a full glossary and the case for C2PA. Read the companion white paper: <a href="/why-watermarks-break/">Why AI watermarks break →</a></p>
+        <p class="load">Loading the interactive lab…</p>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -37,6 +37,25 @@
 }
 
 /*
+ * Tech-noir ground. The app shell is transparent (bg-transparent on the root),
+ * so this body layer carries the whole atmosphere: a deep blue-black, a cold
+ * cyan top glow, an indigo floor, an edge vignette, and a faint CRT scanline.
+ * Baked into the body background (backmost layer) so it needs no z-index
+ * juggling and never paints over content. Signal-aqua accents stay untouched
+ * for brand coherence with the OG image and favicon.
+ */
+body {
+  background-color: #070910;
+  background-image:
+    radial-gradient(120% 85% at 50% -8%, rgba(0, 229, 255, 0.055), transparent 55%),
+    radial-gradient(95% 80% at 50% 116%, rgba(84, 46, 168, 0.05), transparent 55%),
+    radial-gradient(140% 120% at 50% 42%, transparent 58%, rgba(2, 3, 8, 0.7)),
+    repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.014) 0 1px, transparent 1px 4px);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/*
  * Accessibility: honour the OS "reduce motion" preference. Calms the always-on
  * pulse/scan animations for motion-sensitive users (and lets the page reach
  * paint-idle for screenshot/automation tooling).

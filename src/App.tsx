@@ -67,7 +67,10 @@ export default function App() {
   }, [activeTab]);
 
   return (
-    <div className="min-h-screen bg-[#0D0F13] text-white font-sans selection:bg-cyan-500/25 selection:text-cyan-200 relative overflow-x-hidden">
+    <div className="min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/25 selection:text-cyan-200 relative overflow-x-hidden">
+
+      {/* Skip link: first focusable element, lets keyboard users bypass the tablist. */}
+      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-3 focus:left-3 focus:px-3 focus:py-2 focus:rounded-lg focus:bg-cyan-400 focus:text-black focus:font-bold focus:text-sm">Skip to main content</a>
 
       {/* Animated Mesh Background Elements */}
       <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-900/20 rounded-full blur-[120px] pointer-events-none" />
@@ -139,7 +142,7 @@ export default function App() {
       </header>
 
       {/* Main content body grid layout space */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-8">
+      <main id="main" tabIndex={-1} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-8 outline-none">
 
         {/* Honest scope banner — the integrity guardrail, made unmissable */}
         <div className="flex items-start gap-3 bg-amber-500/[0.06] border border-amber-500/25 rounded-xl px-4 py-3">
@@ -191,14 +194,16 @@ export default function App() {
         </div>
 
         {/* Dynamic Display of Lab Workspace Views */}
+        {/* No mode="wait": the active tab mounts immediately (present in the DOM
+            for crawlers / non-painting panes) instead of waiting on an exit
+            animation that a throttled requestAnimationFrame never completes. */}
         <div className="min-h-[460px]">
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             {activeTab === 'images' && (
               <motion.div
                 key="images"
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.18 }}
               >
                 <ImageSandbox />
@@ -210,7 +215,6 @@ export default function App() {
                 key="text"
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.18 }}
               >
                 <TextBypassSandbox />
@@ -218,19 +222,19 @@ export default function App() {
             )}
 
             {activeTab === 'audio' && (
-              <motion.div key="audio" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.18 }}>
+              <motion.div key="audio" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.18 }}>
                 <AudioLab />
               </motion.div>
             )}
 
             {activeTab === 'analysis' && (
-              <motion.div key="analysis" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.18 }}>
+              <motion.div key="analysis" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.18 }}>
                 <AnalysisLab />
               </motion.div>
             )}
 
             {activeTab === 'showdown' && (
-              <motion.div key="showdown" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.18 }}>
+              <motion.div key="showdown" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.18 }}>
                 <CredentialShowdown />
               </motion.div>
             )}
@@ -240,7 +244,6 @@ export default function App() {
                 key="comfy"
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.18 }}
               >
                 <ComfyUIWorkflow />
@@ -252,7 +255,6 @@ export default function App() {
                 key="research"
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.18 }}
                 className="space-y-8"
               >
@@ -347,7 +349,7 @@ export default function App() {
 
       </main>
 
-      <footer className="bg-[#0D0F13]/60 backdrop-blur-md border-t border-white/5 z-10 mt-12 w-full">
+      <footer className="bg-[#070910]/70 backdrop-blur-md border-t border-white/5 z-10 mt-12 w-full">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 py-6 flex flex-col gap-5">
 
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-5">
