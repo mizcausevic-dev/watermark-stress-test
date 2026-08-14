@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#05070c" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<title>AI Disclosure Statements: What to Say, When It's Required, and Examples | Kinetic Gain</title>
+<meta name="description" content="What an AI disclosure statement is, when platforms like YouTube, Amazon KDP, and Steam actually require one, the line between AI-assisted and AI-generated, copy-paste examples, and how to make a disclosure verifiable with Content Credentials instead of relying on the honor system." />
+<meta name="keywords" content="ai disclosure, ai disclosure statement, ai disclosure statement example, ai content disclosure, youtube ai disclosure, amazon kdp ai disclosure, steam ai disclosure, C2PA, content provenance" />
+<meta name="author" content="Miz Causevic, Kinetic Gain" />
+<link rel="canonical" href="https://provenance-lab.kineticgain.com/blog/ai-disclosure-statement/" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Kinetic Gain" />
+<meta property="og:title" content="AI Disclosure Statements: What to Say, When It's Required, and Examples" />
+<meta property="og:description" content="When you actually need an AI disclosure, the assisted-versus-generated line, copy-paste examples, and how to make a disclosure verifiable." />
+<meta property="og:url" content="https://provenance-lab.kineticgain.com/blog/ai-disclosure-statement/" />
+<meta property="og:image" content="https://provenance-lab.kineticgain.com/og-cover.png" />
+<meta property="article:published_time" content="2026-08-14" />
+<meta property="article:modified_time" content="2026-08-14" />
+<meta property="article:section" content="AI Governance" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AI Disclosure Statements: What to Say and When" />
+<meta name="twitter:description" content="Platform rules, the assisted-vs-generated line, copy-paste examples, and how to make a disclosure verifiable." />
+<meta name="twitter:image" content="https://provenance-lab.kineticgain.com/og-cover.png" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "AI Disclosure Statements: What to Say, When It's Required, and Examples",
+  "description": "What an AI disclosure statement is, when YouTube, Amazon KDP, and Steam require one, the assisted-versus-generated line, copy-paste examples, and how to make a disclosure verifiable with Content Credentials.",
+  "url": "https://provenance-lab.kineticgain.com/blog/ai-disclosure-statement/",
+  "image": "https://provenance-lab.kineticgain.com/og-cover.png",
+  "inLanguage": "en",
+  "datePublished": "2026-08-14",
+  "dateModified": "2026-08-14",
+  "wordCount": 1600,
+  "articleSection": "AI Governance",
+  "keywords": "ai disclosure, ai disclosure statement, ai disclosure statement example, youtube ai disclosure, amazon kdp ai disclosure, content provenance, C2PA",
+  "isAccessibleForFree": true,
+  "author": { "@type": "Person", "name": "Miz Causevic", "url": "https://www.linkedin.com/in/mirzacausevic", "jobTitle": "Platform & Security Engineering Lead" },
+  "publisher": { "@type": "Organization", "name": "Kinetic Gain", "url": "https://kineticgain.com/", "logo": { "@type": "ImageObject", "url": "https://provenance-lab.kineticgain.com/icon-512.png", "width": 512, "height": 512 } },
+  "about": [
+    { "@type": "Thing", "name": "AI content disclosure" },
+    { "@type": "Thing", "name": "AI governance" },
+    { "@type": "Thing", "name": "Content provenance" }
+  ],
+  "mainEntityOfPage": "https://provenance-lab.kineticgain.com/blog/ai-disclosure-statement/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What is an AI disclosure statement?",
+      "acceptedAnswer": { "@type": "Answer", "text": "An AI disclosure statement is a plain-language notice that artificial intelligence was used to create or materially alter a piece of content. It tells the audience, and often a platform, what role AI played, for example that an image was AI-generated or that a book's text was produced with a generative model. It is a transparency claim, usually made on the honor system, and increasingly required by platforms and regulators." } },
+    { "@type": "Question", "name": "Do I have to disclose AI-generated content?",
+      "acceptedAnswer": { "@type": "Answer", "text": "It depends on where you publish. YouTube requires disclosure of realistic altered or synthetic content, Amazon KDP requires authors to declare AI-generated text, images, or translations, and Steam requires developers to disclose player-facing AI content on the store page. The EU AI Act also pushes toward marking synthetic content. Most policies do not require disclosure for light AI assistance like grammar help or brainstorming." } },
+    { "@type": "Question", "name": "What is the difference between AI-assisted and AI-generated?",
+      "acceptedAnswer": { "@type": "Answer", "text": "AI-assisted means a human did the substantive work and used AI as a tool, for example to check grammar, suggest edits, or brainstorm. AI-generated means the model produced the substantive content itself, such as writing the text or creating the image. Most disclosure rules only trigger for AI-generated or materially AI-altered content, not for ordinary assistance, but the line is defined per platform, so check the specific policy." } },
+    { "@type": "Question", "name": "How do I prove my AI disclosure is accurate?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A written statement is a claim, not proof. To make it verifiable, attach cryptographically signed provenance to the asset itself using C2PA Content Credentials, which record what tool made the content and how it was edited. That turns an honor-system promise into an auditable, tamper-evident record that a viewer or platform can check independently." } }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Watermark Stress Test", "item": "https://provenance-lab.kineticgain.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://provenance-lab.kineticgain.com/blog/" },
+    { "@type": "ListItem", "position": 3, "name": "AI disclosure statements", "item": "https://provenance-lab.kineticgain.com/blog/ai-disclosure-statement/" }
+  ]
+}
+</script>
+<link rel="stylesheet" href="/blog/article.css" />
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="dot"></span> Watermark Stress Test</a>
+    <nav class="nav">
+      <a href="/blog/">Blog</a>
+      <a href="/why-watermarks-break/">White paper</a>
+      <a href="/">Open the lab</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+<div class="hero">
+  <span class="eyebrow">AI Governance · Practical guide</span>
+  <h1>AI disclosure statements: what to say, when you need one, and copy-paste examples</h1>
+  <p class="lede">Platforms and regulators increasingly ask you to say when content is AI-made. Here is what an AI disclosure statement actually is, when YouTube, Amazon KDP, and Steam require one, the line between assisted and generated, wording you can reuse, and the step almost everyone skips: making the disclosure verifiable instead of trusting it on faith.</p>
+  <div class="byline">
+    <span>By <strong style="color:#e6e9ef">Miz Causevic</strong> · Platform &amp; Security Engineering Lead</span>
+    <span>·</span>
+    <span>14 August 2026</span>
+    <span>·</span>
+    <span>~8 min read</span>
+  </div>
+</div>
+
+<article>
+
+  <div class="tldr">
+    <div class="t">TL;DR</div>
+    <ul>
+      <li>An <strong>AI disclosure statement</strong> is a plain-language notice that AI created or materially altered a piece of content. It is a transparency claim, usually on the honor system.</li>
+      <li><strong>Whether you must disclose depends on the platform.</strong> YouTube, Amazon KDP, and Steam each require it for AI-<em>generated</em> or realistic synthetic content, but not for ordinary AI <em>assistance</em>.</li>
+      <li>The recurring line is <strong>assisted versus generated</strong>: grammar help and brainstorming rarely trigger disclosure; AI writing the text or making the image does.</li>
+      <li>Copy-paste <strong>examples</strong> for articles, books, images, and software are below. Adapt the bracketed parts.</li>
+      <li>A statement is a <strong>promise, not a receipt</strong>. Pair it with signed <a href="/blog/c2pa-content-credentials-explained/">C2PA Content Credentials</a> so the disclosure is verifiable, which is also the direction the <a href="/blog/eu-ai-act-article-50-content-marking/">EU AI Act</a> is pushing.</li>
+    </ul>
+  </div>
+
+  <p>"Made with AI" is becoming a required line, not a courtesy. The awkward part is that most disclosure today is a sentence you type and everyone agrees to believe. That works until it does not, and the platforms know it, which is why the rules are tightening and why the more serious answer is to make the claim checkable. Start with what the statement is and when you owe one, then close the honor-system gap.</p>
+
+  <h2>What an AI disclosure statement is</h2>
+  <p>An AI disclosure statement is a short, plain-language notice that artificial intelligence was used to create or substantially change a piece of content. It names the role AI played, an image was AI-generated, a chapter was drafted by a model, a voice was synthesized, so the audience is not misled about what they are looking at. In its weakest form it is one sentence in a caption or an author's note. In its strongest form it is a machine-readable record attached to the file. Both are called disclosure; only one can be verified, which is the whole tension in this piece.</p>
+
+  <h2>When you actually need one</h2>
+  <p>There is no single rule. Obligations come from the platform you publish on and, increasingly, from law. The consistent pattern across policies is that they target AI-<em>generated</em> or realistically <em>altered</em> content, and they explicitly exempt light assistance. Three of the most common surfaces:</p>
+  <ul>
+    <li><strong>YouTube.</strong> Creators must disclose <a href="https://support.google.com/youtube/answer/14328491" target="_blank" rel="noreferrer">realistic altered or synthetic content</a>, meaning material a viewer could mistake for a real person, place, or event. The label appears in the description, or on the video itself for sensitive topics. Clearly unrealistic, animated, or production-assistance uses do not require it.</li>
+    <li><strong>Amazon KDP.</strong> Authors must declare <a href="https://authorsguild.org/news/amazons-new-disclosure-policy-for-ai-generated-book-content-is-a-welcome-first-step/" target="_blank" rel="noreferrer">AI-generated text, images, or translations</a> through a mandatory checkbox when publishing or updating a book. AI-<em>assisted</em> work, brainstorming, editing, refining your own writing, does not need to be declared. Enforcement tightened through 2025, and undisclosed AI content can get titles blocked.</li>
+    <li><strong>Steam.</strong> Game developers must disclose <a href="https://legalmoveslawfirm.com/steam-ai-policy/" target="_blank" rel="noreferrer">player-facing AI content</a> on the store page through the Steamworks content survey, separated into pre-generated assets that ship with the game and live-generated content produced during play. As of a January 2026 update, behind-the-scenes efficiency tools like coding assistants are explicitly out of scope.</li>
+  </ul>
+  <p>Beyond platforms, the <a href="/blog/eu-ai-act-article-50-content-marking/">EU AI Act's Article 50</a> moves the whole field toward marking synthetic content in a machine-readable way, which is a stronger bar than a human-readable sentence. If your audience is global, design for that direction now.</p>
+
+  <h2>Copy-paste AI disclosure examples</h2>
+  <p>These are starting points, not legal text. Keep them specific and truthful: name what was AI-made and what was human, because a vague or inaccurate disclosure is worse than none. Replace the bracketed parts.</p>
+
+  <h3>For an article or blog post</h3>
+  <p>"Parts of this article were generated with [model or tool]. A human author [wrote / edited / fact-checked and approved] the final text. Any images marked AI were created with [tool]."</p>
+
+  <h3>For a book (KDP-style)</h3>
+  <p>"This book contains AI-generated [text / images / translation] created with [tool]. The content was reviewed and edited by [author name] prior to publication."</p>
+
+  <h3>For an image or video</h3>
+  <p>"[AI-generated with [tool]] / [Contains AI-altered footage]. No real person depicted is making a real statement. Edited by [name / studio]."</p>
+
+  <h3>For software or a game</h3>
+  <p>"This [app / game] uses AI to generate [assets / dialogue / art] with [tool]. [Pre-generated assets ship with the product. / Content is generated live during use, with safeguards to prevent harmful output.]"</p>
+
+  <div class="callout scope">
+    <strong>Not legal advice.</strong> This is engineering and transparency guidance, not a legal opinion, and it does not certify compliance with any platform policy or law. Requirements change and vary by jurisdiction and product. For a real obligation, confirm the current policy at the source and, where the stakes warrant it, get qualified legal review.
+  </div>
+
+  <h2>A statement is a promise, not a receipt</h2>
+  <p>Here is the gap every honor-system disclosure has: the sentence and the content are not bound together. Copy an AI image away from its caption and the disclosure is gone. Screenshot a video and the label does not travel. Edit a file and nothing in it records that AI was ever involved. The claim lives beside the asset, not inside it, so it is trivially separated from the thing it describes.</p>
+  <p>That is the same weakness a hidden watermark has from the other direction, and you can watch it happen in our <a href="/">interactive lab</a>: a mark that reads as present one moment collapses after a single edit, silently. A written disclosure fails even more simply, because it was never attached in the first place. Transparency you cannot verify is transparency someone else can quietly strip.</p>
+
+  <h2>How to make a disclosure verifiable</h2>
+  <p>The fix is to bind the disclosure to the asset in a way that survives handling and resists tampering. That is what <a href="/blog/c2pa-content-credentials-explained/">C2PA Content Credentials</a> do: a cryptographically signed manifest, carried with the file, that records what tool produced the content and how it was edited. Instead of a sentence a viewer has to trust, you get a signed record a viewer can check, one that reads as valid, invalid, or absent rather than simply being taken at your word. The written statement is still worth making for humans skimming a caption. The Content Credential is what makes it stand up when someone actually looks.</p>
+  <p>Put simply: write the disclosure for people, and sign the provenance for verification. One is the promise. The other is the receipt.</p>
+
+  <div class="cta">
+    <a class="btn primary" href="/">See why unverifiable marks fail, in the lab →</a>
+    <a class="btn ghost" href="/blog/eu-ai-act-article-50-content-marking/">What the EU AI Act requires</a>
+  </div>
+
+  <h2 class="faq">Frequently asked questions</h2>
+  <div class="faq">
+    <h3>What is an AI disclosure statement?</h3>
+    <p>A plain-language notice that AI was used to create or materially alter a piece of content. It tells the audience, and often a platform, what role AI played. It is a transparency claim, usually made on the honor system, and increasingly required by platforms and regulators.</p>
+    <h3>Do I have to disclose AI-generated content?</h3>
+    <p>It depends where you publish. YouTube requires it for realistic altered or synthetic content, Amazon KDP for AI-generated text, images, or translations, and Steam for player-facing AI content on the store page. The EU AI Act pushes toward marking synthetic content. Most policies exempt light assistance like grammar help.</p>
+    <h3>What is the difference between AI-assisted and AI-generated?</h3>
+    <p>AI-assisted means a human did the substantive work and used AI as a tool. AI-generated means the model produced the substantive content itself. Most disclosure rules trigger only for AI-generated or materially AI-altered content, not for ordinary assistance, but each platform defines the line, so check the specific policy.</p>
+    <h3>How do I prove my AI disclosure is accurate?</h3>
+    <p>A written statement is a claim, not proof. To make it verifiable, attach signed C2PA Content Credentials to the asset itself, recording what tool made the content and how it was edited. That turns an honor-system promise into an auditable, tamper-evident record anyone can check.</p>
+  </div>
+
+  <div class="related">
+    <h2>Keep reading</h2>
+    <div class="related-grid">
+      <a href="/blog/eu-ai-act-article-50-content-marking/"><span class="rk">AI Governance</span><span class="rt">EU AI Act Article 50: what machine-readable marking requires</span><span class="rd">Why the law pushes past a human-readable sentence toward a verifiable mark.</span></a>
+      <a href="/blog/c2pa-content-credentials-explained/"><span class="rk">Explainer</span><span class="rt">C2PA Content Credentials, explained</span><span class="rd">The signed provenance layer that turns a disclosure into a receipt.</span></a>
+      <a href="/why-watermarks-break/"><span class="rk">White paper</span><span class="rt">Why AI watermarks break, and the case for Content Credentials</span><span class="rd">Why unverifiable marks fail, and what durable provenance looks like.</span></a>
+    </div>
+  </div>
+
+</article>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <div>An educational provenance project by <strong style="color:#cdd4df">Miz Causevic</strong> under <a href="https://kineticgain.com/" target="_blank" rel="noreferrer">Kinetic Gain LLC</a>.</div>
+    <div class="links">
+      <a href="/">The lab</a>
+      <a href="/blog/">Blog</a>
+      <a href="https://contentcredentials.org/" target="_blank" rel="noreferrer">C2PA</a>
+      <a href="https://github.com/mizcausevic-dev/watermark-stress-test" target="_blank" rel="noreferrer">Source</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
