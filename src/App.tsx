@@ -73,9 +73,10 @@ export default function App() {
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-3 focus:left-3 focus:px-3 focus:py-2 focus:rounded-lg focus:bg-cyan-400 focus:text-black focus:font-bold focus:text-sm">Skip to main content</a>
 
       {/* Animated Mesh Background Elements */}
-      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-900/20 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-900/20 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute top-[20%] right-[10%] w-[30%] h-[30%] bg-cyan-900/10 rounded-full blur-[100px] pointer-events-none" />
+      {/* Tech-noir atmosphere: cold teal + steel masses, no purple/synthwave. */}
+      <div className="absolute top-[-12%] left-[-12%] w-[52%] h-[52%] bg-[#083039]/50 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute bottom-[-14%] right-[-12%] w-[58%] h-[58%] bg-[#080f18]/70 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-[16%] right-[6%] w-[34%] h-[34%] bg-cyan-500/[0.09] rounded-full blur-[110px] pointer-events-none" />
 
       {/* Header Container */}
       <header className="sticky top-0 z-50 h-16 flex items-center justify-between border-b border-white/10 bg-white/5 backdrop-blur-xl">
