@@ -304,6 +304,14 @@
     <p>No. It operates only on a synthetic watermark it injects itself, in your browser. The robustness point is general: in-band watermarks can be attenuated by ordinary editing, which is why provenance shouldn't depend on them alone.</p>
   </div>
 
+  <h2>Further reading</h2>
+  <p>Companion articles that go deeper on specific questions:</p>
+  <ul>
+    <li><a href="/blog/eu-ai-act-article-50-content-marking/">EU AI Act Article 50: what "machine-readable marking" actually requires</a>. The reliability bar, and why watermark-only marking is fragile.</li>
+    <li><a href="/blog/watermarking-vs-content-credentials/">Watermarking vs. Content Credentials: which proves AI-content origin?</a> Two machine-readable approaches that fail in opposite ways.</li>
+    <li><a href="/blog/c2pa-content-credentials-explained/">C2PA Content Credentials, explained</a>. How signed provenance works, and how to verify it.</li>
+  </ul>
+
   <h2>Related work</h2>
   <p>This project concerns <strong>content provenance</strong> watermarking — marks embedded in generated media (the SynthID family). It is independent of, and not derived from, the <a href="https://github.com/dnn-security/Watermark-Robustness-Toolbox" target="_blank" rel="noreferrer">Watermark-Robustness-Toolbox (WRT)</a> by Lukas, Jiang, Li &amp; Kerschbaum, which benchmarks the robustness of <em>DNN model-weight</em> watermarks — used to prove ownership of trained neural networks, a distinct subfield. See their IEEE S&amp;P 2022 paper, <em>"SoK: How Robust is Deep Neural Network Image Classification Watermarking?"</em> Different domain, different stack, no shared code.</p>
 

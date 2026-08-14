@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#05070c" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<title>EU AI Act Article 50: What Machine-Readable Marking of AI Content Requires | Kinetic Gain</title>
+<meta name="description" content="Article 50 of the EU AI Act requires generative-AI outputs to be marked in a machine-readable, detectable way. What the rule says, the dates that matter, the effective, interoperable, robust and reliable bar, and why a hidden watermark alone is fragile to meet it." />
+<meta name="keywords" content="EU AI Act Article 50, machine-readable marking, AI content transparency, marking AI generated content, C2PA, Content Credentials, watermarking, AI Act deadline 2026" />
+<meta name="author" content="Miz Causevic, Kinetic Gain" />
+<link rel="canonical" href="https://provenance-lab.kineticgain.com/blog/eu-ai-act-article-50-content-marking/" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Kinetic Gain" />
+<meta property="og:title" content="EU AI Act Article 50: What Machine-Readable Marking of AI Content Requires" />
+<meta property="og:description" content="What Article 50 requires, the dates that matter, and why a hidden watermark alone is a fragile way to meet the effective, interoperable, robust and reliable bar." />
+<meta property="og:url" content="https://provenance-lab.kineticgain.com/blog/eu-ai-act-article-50-content-marking/" />
+<meta property="og:image" content="https://provenance-lab.kineticgain.com/og-cover.png" />
+<meta property="article:published_time" content="2026-08-14" />
+<meta property="article:modified_time" content="2026-08-14" />
+<meta property="article:section" content="AI Governance" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="EU AI Act Article 50: Machine-Readable Marking of AI Content" />
+<meta name="twitter:description" content="What the rule requires, the 2026 dates, and why watermark-only marking is fragile against the reliability bar." />
+<meta name="twitter:image" content="https://provenance-lab.kineticgain.com/og-cover.png" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "EU AI Act Article 50: What Machine-Readable Marking of AI Content Actually Requires",
+  "description": "What Article 50 of the EU AI Act requires for marking generative-AI outputs, the dates that matter, the effective, interoperable, robust and reliable bar, and why a hidden watermark alone is fragile to meet it.",
+  "url": "https://provenance-lab.kineticgain.com/blog/eu-ai-act-article-50-content-marking/",
+  "image": "https://provenance-lab.kineticgain.com/og-cover.png",
+  "inLanguage": "en",
+  "datePublished": "2026-08-14",
+  "dateModified": "2026-08-14",
+  "wordCount": 1650,
+  "articleSection": "AI Governance",
+  "keywords": "EU AI Act Article 50, machine-readable marking, AI content transparency, C2PA, Content Credentials, watermarking",
+  "isAccessibleForFree": true,
+  "author": { "@type": "Person", "name": "Miz Causevic", "url": "https://www.linkedin.com/in/mirzacausevic", "jobTitle": "Platform & Security Engineering Lead" },
+  "publisher": { "@type": "Organization", "name": "Kinetic Gain", "url": "https://kineticgain.com/", "logo": { "@type": "ImageObject", "url": "https://provenance-lab.kineticgain.com/icon-512.png", "width": 512, "height": 512 } },
+  "about": [
+    { "@type": "Thing", "name": "EU AI Act" },
+    { "@type": "Thing", "name": "AI content transparency" },
+    { "@type": "Thing", "name": "C2PA Content Credentials" }
+  ],
+  "mainEntityOfPage": "https://provenance-lab.kineticgain.com/blog/eu-ai-act-article-50-content-marking/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "When does EU AI Act Article 50 apply?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Article 50 transparency obligations apply from 2 August 2026. A provisional May 2026 agreement (the AI Omnibus) would give generative-AI systems already on the market until 2 December 2026 to meet the machine-readable marking requirement of Article 50(2). Both are moving targets, so verify current status against official sources." } },
+    { "@type": "Question", "name": "Does Article 50 only apply to high-risk AI systems?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. The Article 50 transparency obligations are not limited to high-risk systems. They apply to the situations the Article covers, which in practice reaches any business that uses generative AI to produce synthetic images, text, audio, or video." } },
+    { "@type": "Question", "name": "Does watermarking satisfy the machine-readable marking requirement?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Watermarking can contribute, but a watermark-only strategy is hard to defend against the requirement that the technique be effective, interoperable, robust, and reliable. In-band watermarks degrade silently under ordinary edits, so cryptographically signed provenance (C2PA / Content Credentials) is the tamper-evident layer that meets the reliability test, with watermarking as one corroborating signal." } },
+    { "@type": "Question", "name": "What does machine-readable marking of AI content mean?",
+      "acceptedAnswer": { "@type": "Answer", "text": "It means a mark a program can read to determine that content was artificially generated or manipulated, without a human having to judge by eye. In practice that is an embedded watermark, signed C2PA metadata bound to the asset, or both." } }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Watermark Stress Test", "item": "https://provenance-lab.kineticgain.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://provenance-lab.kineticgain.com/blog/" },
+    { "@type": "ListItem", "position": 3, "name": "EU AI Act Article 50 content marking", "item": "https://provenance-lab.kineticgain.com/blog/eu-ai-act-article-50-content-marking/" }
+  ]
+}
+</script>
+<link rel="stylesheet" href="/blog/article.css" />
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="dot"></span> Watermark Stress Test</a>
+    <nav class="nav">
+      <a href="/blog/">Blog</a>
+      <a href="/why-watermarks-break/">White paper</a>
+      <a href="/">Open the lab</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+<div class="hero">
+  <span class="eyebrow">AI Governance · Explainer</span>
+  <h1>EU AI Act Article 50: what "machine-readable marking" actually requires</h1>
+  <p class="lede">If your product generates images, text, audio, or video with AI, Article 50 expects those outputs to carry a machine-readable mark that says a machine made this. Here is what the rule asks for, when it bites, and why a hidden watermark alone is a fragile way to meet it.</p>
+  <div class="byline">
+    <span>By <strong style="color:#e6e9ef">Miz Causevic</strong> · Platform &amp; Security Engineering Lead</span>
+    <span>·</span>
+    <span>14 August 2026</span>
+    <span>·</span>
+    <span>~8 min read</span>
+  </div>
+</div>
+
+<article>
+
+  <div class="tldr">
+    <div class="t">TL;DR</div>
+    <ul>
+      <li>Article 50(2) requires providers of generative AI to mark synthetic outputs in a <strong>machine-readable</strong> format, detectable as artificially generated or manipulated.</li>
+      <li>The obligation applies from <strong>2 August 2026</strong>. A provisional May 2026 agreement (the "AI Omnibus") would give systems already on the market until <strong>2 December 2026</strong> to meet the machine-readable part. Treat both as live and re-verify.</li>
+      <li>Scope is broad. It is <strong>not limited to high-risk AI</strong>. It reaches any business using generative AI to produce content.</li>
+      <li>The legal bar is that the technique be <strong>"effective, interoperable, robust, and reliable."</strong> A watermark hidden inside the pixels fades silently under ordinary edits, so watermark-only marking is hard to defend against that bar.</li>
+      <li>Cryptographically signed provenance (C2PA / Content Credentials) is the machine-readable, tamper-evident layer that answers the reliability test, with watermarking as one corroborating signal.</li>
+    </ul>
+  </div>
+
+  <p>Article 50 is the transparency article of the EU AI Act. It is short, it is not restricted to the high-risk tier everyone spent 2024 worrying about, and its marking obligation lands on a much wider set of products than most teams assume. If you ship a feature that generates synthetic media, this is the clause that now expects a machine, not just a person, to be able to tell.</p>
+
+  <h2>What Article 50 asks for</h2>
+  <p>The part that matters for content marking is <strong>Article 50(2)</strong>. It puts the obligation on <em>providers</em> of generative AI systems, including general-purpose systems: the outputs they produce (synthetic audio, image, video, or text) must be <strong>marked in a machine-readable format and detectable as artificially generated or manipulated</strong>. A separate obligation, in Article 50(4), sits on <em>deployers</em> who publish deepfakes or AI-generated text on matters of public interest, and is about human-facing disclosure. The two are often conflated. This piece is about the first one: the machine-readable mark on the output itself. The practical guide from the <a href="https://artificialintelligenceact.eu/transparency-rules-article-50/" target="_blank" rel="noreferrer">EU Artificial Intelligence Act project</a> and the European Commission's own <a href="https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act" target="_blank" rel="noreferrer">transparency FAQ</a> are the primary references.</p>
+
+  <h2>The dates that matter</h2>
+  <p>Three dates are worth writing down, and one caveat is worth writing in bold.</p>
+  <ul>
+    <li><strong>2 August 2026:</strong> Article 50 transparency obligations become applicable.</li>
+    <li><strong>2 December 2026:</strong> under a provisional May 2026 agreement often called the "AI Omnibus," generative-AI systems already on the market before the applicability date would get until here to satisfy the machine-readable marking requirement specifically.</li>
+    <li><strong>Mid-2026:</strong> a Code of Practice on marking and labelling, which the Commission began drafting in late 2025, is expected to land in a final form and give concrete, testable guidance on acceptable techniques.</li>
+  </ul>
+  <p class="callout scope"><strong>Caveat, in bold because it is the important one:</strong> the Omnibus was provisional at the time of writing and regulatory dates in this file can move. Verify the current status against the official sources before you plan a release around any of them. Nothing here is legal advice.</p>
+
+  <h2>The bar you actually have to clear</h2>
+  <p>Article 50(2) does not just say "mark it." It says the technical solution must be <strong>"effective, interoperable, robust, and reliable, taking into account the state of the art."</strong> Those four words are the whole test, and they are where a marking strategy either holds up or quietly does not:</p>
+  <ul>
+    <li><strong>Effective</strong>: a machine can actually detect the mark.</li>
+    <li><strong>Interoperable</strong>: it works across tools and platforms, not only inside your own product.</li>
+    <li><strong>Robust</strong>: it survives ordinary handling of the file.</li>
+    <li><strong>Reliable</strong>: you can trust the answer it gives.</li>
+  </ul>
+  <p>The last two are the trap for anyone planning to lean on a hidden watermark. An in-band watermark, the family Google DeepMind's SynthID belongs to, hides a recoverable signal inside the pixels or tokens. It survives a screenshot. It does not reliably survive someone editing the file: a frequency-notch filter, a denoise pass, a re-encode, or a paraphrase can attenuate the signal while the content still looks and reads fine. Worse, the failure is <strong>silent</strong>. A stripped mark announces nothing, so a marking method can pass on an untouched file and then fail invisibly after one routine re-save. That is a hard thing to call "reliable."</p>
+  <p>You do not have to take that on faith. Our <a href="/">interactive lab</a> injects a synthetic watermark and lets you watch its detection score collapse under exactly these edits, and the companion white paper, <a href="/why-watermarks-break/">Why AI watermarks break</a>, works through the mechanism.</p>
+
+  <h2>Your machine-readable options</h2>
+  <p>There are two families of machine-readable marking, and they fail in opposite ways.</p>
+  <table>
+    <thead><tr><th>Approach</th><th>What it is</th><th>Where it struggles</th></tr></thead>
+    <tbody>
+      <tr><td><strong>In-band watermark</strong></td><td>Hides a recoverable signal inside the media (SynthID and relatives)</td><td>Fades silently under ordinary edits; detection is a probability, and absence proves nothing</td></tr>
+      <tr><td><strong>Signed provenance (C2PA)</strong></td><td>Attaches cryptographically signed metadata bound to the asset (Content Credentials)</td><td>A recipient has to check it, and the credential can be stripped, but stripping or tampering is <em>detectable</em> rather than silent</td></tr>
+    </tbody>
+  </table>
+  <p>The key difference for the reliability bar: a watermark fails quietly, and a signed credential fails loudly. When tampering breaks a C2PA signature, "invalid" and "no credential" become explicit, checkable states rather than a probability that faded. That auditability is exactly what a regulator, or your own compliance team, needs to stand behind a claim.</p>
+
+  <h2>What a defensible marking posture looks like</h2>
+  <p>The pragmatic answer is not to pick one. It is to layer, so that no single technique carries the whole load:</p>
+  <ul>
+    <li><strong>Content Credentials (C2PA) as the backbone.</strong> Cryptographically signed, tamper-evident provenance is the part you can audit, and it is an open, interoperable standard (currently version 2.4) with a live conformance program.</li>
+    <li><strong>Watermarking as one corroborating signal.</strong> It gives population-scale coverage even on assets that lose their metadata, as long as you treat a low or absent score as inconclusive, not as proof.</li>
+    <li><strong>Human-readable disclosure on top.</strong> Where a person interacts with the AI or the content, plain labeling covers the transparency-to-people obligations that machine marking does not.</li>
+  </ul>
+  <p>Document the lawful basis and retention for anything you log along the way. Again, not legal advice: this is an engineering-readiness view, not a substitute for counsel at the point you formalize a compliance claim.</p>
+
+  <h2>A short readiness checklist</h2>
+  <ul>
+    <li>Inventory every surface where your product generates synthetic content.</li>
+    <li>Choose your machine-readable method. Prefer signed provenance for the reliability bar; add watermarking for coverage.</li>
+    <li>Test robustness honestly: does your mark survive a re-save, a crop, a re-encode, a paraphrase? You can feel that failure mode in the lab in about a minute.</li>
+    <li>Add human-facing disclosure wherever people meet AI content.</li>
+    <li>Track the Code of Practice and the Omnibus timeline, and re-verify the dates before you commit a release.</li>
+  </ul>
+
+  <div class="cta">
+    <a class="btn primary" href="/">See watermark fragility live →</a>
+    <a class="btn ghost" href="/why-watermarks-break/">Read the white paper</a>
+  </div>
+
+  <h2 class="faq">Frequently asked questions</h2>
+  <div class="faq">
+    <h3>When does Article 50 apply?</h3>
+    <p>Article 50 transparency obligations apply from 2 August 2026. A provisional May 2026 agreement (the AI Omnibus) would give systems already on the market until 2 December 2026 to meet the machine-readable marking part of Article 50(2). Both are moving targets. Verify current status against official sources.</p>
+    <h3>Does Article 50 only apply to high-risk AI?</h3>
+    <p>No. The transparency obligations are not restricted to the high-risk tier. They reach the situations the Article covers, which in practice includes any business using generative AI to produce synthetic images, text, audio, or video.</p>
+    <h3>Does watermarking satisfy the machine-readable marking requirement?</h3>
+    <p>It can contribute, but a watermark-only strategy is hard to defend against the requirement that the technique be effective, interoperable, robust, and reliable. In-band watermarks fade silently under ordinary edits, so signed provenance (C2PA / Content Credentials) is the tamper-evident layer that answers the reliability test, with watermarking as one corroborating signal.</p>
+    <h3>Is this legal advice?</h3>
+    <p>No. This is an engineering-readiness explainer, not legal advice, and the regulatory dates here can change. Confirm the current position with the official EU sources and your own counsel before relying on it.</p>
+  </div>
+
+  <div class="related">
+    <h2>Keep reading</h2>
+    <div class="related-grid">
+      <a href="/why-watermarks-break/"><span class="rk">White paper</span><span class="rt">Why AI watermarks break, and the case for Content Credentials</span><span class="rd">The mechanism behind silent watermark failure, demonstrated.</span></a>
+      <a href="/blog/watermarking-vs-content-credentials/"><span class="rk">Comparison</span><span class="rt">Watermarking vs. Content Credentials: which proves AI-content origin?</span><span class="rd">Two machine-readable approaches, and where each one fails.</span></a>
+      <a href="/blog/c2pa-content-credentials-explained/"><span class="rk">Explainer</span><span class="rt">C2PA Content Credentials, explained</span><span class="rd">How signed provenance works, and how to verify it.</span></a>
+    </div>
+  </div>
+
+</article>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <div>An educational provenance project by <strong style="color:#cdd4df">Miz Causevic</strong> under <a href="https://kineticgain.com/" target="_blank" rel="noreferrer">Kinetic Gain LLC</a>.</div>
+    <div class="links">
+      <a href="/">The lab</a>
+      <a href="/blog/">Blog</a>
+      <a href="https://contentcredentials.org/" target="_blank" rel="noreferrer">C2PA</a>
+      <a href="https://github.com/mizcausevic-dev/watermark-stress-test" target="_blank" rel="noreferrer">Source</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

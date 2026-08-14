@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#05070c" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<title>Provenance Notes: AI Watermarking, C2PA &amp; Content Authenticity | Kinetic Gain</title>
+<meta name="description" content="Evidence-graded writing on AI content provenance: why watermarks are fragile, how C2PA Content Credentials work, and what the EU AI Act's marking rules require. Companion articles to the Watermark Stress Test lab." />
+<meta name="author" content="Miz Causevic, Kinetic Gain" />
+<link rel="canonical" href="https://provenance-lab.kineticgain.com/blog/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Kinetic Gain" />
+<meta property="og:title" content="Provenance Notes: AI Watermarking, C2PA &amp; Content Authenticity" />
+<meta property="og:description" content="Evidence-graded articles on AI content provenance, watermark fragility, and C2PA Content Credentials." />
+<meta property="og:url" content="https://provenance-lab.kineticgain.com/blog/" />
+<meta property="og:image" content="https://provenance-lab.kineticgain.com/og-cover.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Provenance Notes: AI Content Provenance" />
+<meta name="twitter:image" content="https://provenance-lab.kineticgain.com/og-cover.png" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Provenance Notes",
+  "description": "Evidence-graded writing on AI content provenance, watermark fragility, and C2PA Content Credentials.",
+  "url": "https://provenance-lab.kineticgain.com/blog/",
+  "inLanguage": "en",
+  "publisher": { "@type": "Organization", "name": "Kinetic Gain", "url": "https://kineticgain.com/" },
+  "blogPost": [
+    { "@type": "BlogPosting", "headline": "EU AI Act Article 50: What Machine-Readable Marking of AI Content Requires", "url": "https://provenance-lab.kineticgain.com/blog/eu-ai-act-article-50-content-marking/", "datePublished": "2026-08-14", "author": { "@type": "Person", "name": "Miz Causevic" } },
+    { "@type": "BlogPosting", "headline": "Watermarking vs. Content Credentials: Which Proves AI-Content Origin?", "url": "https://provenance-lab.kineticgain.com/blog/watermarking-vs-content-credentials/", "datePublished": "2026-08-14", "author": { "@type": "Person", "name": "Miz Causevic" } },
+    { "@type": "BlogPosting", "headline": "C2PA Content Credentials, Explained", "url": "https://provenance-lab.kineticgain.com/blog/c2pa-content-credentials-explained/", "datePublished": "2026-08-14", "author": { "@type": "Person", "name": "Miz Causevic" } }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Watermark Stress Test", "item": "https://provenance-lab.kineticgain.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://provenance-lab.kineticgain.com/blog/" }
+  ]
+}
+</script>
+<link rel="stylesheet" href="/blog/article.css" />
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="dot"></span> Watermark Stress Test</a>
+    <nav class="nav">
+      <a href="/why-watermarks-break/">White paper</a>
+      <a href="/">Open the lab</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+<div class="hero">
+  <span class="eyebrow">Kinetic Gain · Provenance Notes</span>
+  <h1>Provenance notes</h1>
+  <p class="lede">Evidence-graded writing on how content provenance actually works: why AI watermarks are fragile, how cryptographic Content Credentials hold up, and what the new marking rules require. Companion reading to the interactive <a href="/">Watermark Stress Test</a>.</p>
+</div>
+
+<article>
+  <div class="related-grid" style="gap:14px;">
+    <a href="/blog/eu-ai-act-article-50-content-marking/">
+      <span class="rk">AI Governance</span>
+      <span class="rt">EU AI Act Article 50: what "machine-readable marking" actually requires</span>
+      <span class="rd">What the rule asks for, the 2026 dates, and why a hidden watermark is a fragile way to meet the reliability bar.</span>
+    </a>
+    <a href="/blog/watermarking-vs-content-credentials/">
+      <span class="rk">Comparison</span>
+      <span class="rt">Watermarking vs. Content Credentials: which proves AI-content origin?</span>
+      <span class="rd">Two machine-readable approaches that fail in opposite ways, and why the durable answer is to layer them.</span>
+    </a>
+    <a href="/blog/c2pa-content-credentials-explained/">
+      <span class="rk">Explainer</span>
+      <span class="rt">C2PA Content Credentials, explained</span>
+      <span class="rd">What a manifest contains, how signing and verification work, and where the standard still falls short.</span>
+    </a>
+    <a href="/why-watermarks-break/">
+      <span class="rk">White paper</span>
+      <span class="rt">Why AI watermarks break, and the case for Content Credentials</span>
+      <span class="rd">The pillar: the mechanism behind silent watermark failure, demonstrated across image, text, and audio.</span>
+    </a>
+  </div>
+
+  <div class="cta">
+    <a class="btn primary" href="/">Open the interactive lab →</a>
+  </div>
+</article>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <div>An educational provenance project by <strong style="color:#cdd4df">Miz Causevic</strong> under <a href="https://kineticgain.com/" target="_blank" rel="noreferrer">Kinetic Gain LLC</a>.</div>
+    <div class="links">
+      <a href="/">The lab</a>
+      <a href="https://contentcredentials.org/" target="_blank" rel="noreferrer">C2PA</a>
+      <a href="https://github.com/mizcausevic-dev/watermark-stress-test" target="_blank" rel="noreferrer">Source</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

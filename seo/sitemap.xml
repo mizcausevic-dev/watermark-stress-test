@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://provenance-lab.kineticgain.com/</loc>
-    <lastmod>2026-06-06</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -13,16 +13,36 @@
   </url>
   <url>
     <loc>https://provenance-lab.kineticgain.com/why-watermarks-break/</loc>
-    <lastmod>2026-06-06</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
       <image:loc>https://provenance-lab.kineticgain.com/why-watermarks-break/img/05-credentials-tampered.webp</image:loc>
       <image:title>In-band watermark stays silent while a C2PA signature reads INVALID</image:title>
     </image:image>
-    <image:image>
-      <image:loc>https://provenance-lab.kineticgain.com/why-watermarks-break/img/01-pipeline-run.webp</image:loc>
-      <image:title>Perturbation pipeline drives carrier correlation to 0%</image:title>
-    </image:image>
+  </url>
+  <url>
+    <loc>https://provenance-lab.kineticgain.com/blog/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://provenance-lab.kineticgain.com/blog/eu-ai-act-article-50-content-marking/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://provenance-lab.kineticgain.com/blog/watermarking-vs-content-credentials/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://provenance-lab.kineticgain.com/blog/c2pa-content-credentials-explained/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
