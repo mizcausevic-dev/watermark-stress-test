@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#05070c" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<title>Are AI Detectors Accurate? How to Tell if an Image Is AI-Generated | Kinetic Gain</title>
+<meta name="description" content="AI image detectors reach 94-97% accuracy in the lab but fall below 50% on screenshots, compressed files, and social uploads, and they flag real photos as fake. Why detection is unreliable, how to actually check an image, and what to use instead." />
+<meta name="keywords" content="are AI detectors accurate, how to tell if an image is AI generated, best AI image detector, AI detector accuracy, AI image detection, false positives, content provenance, C2PA" />
+<meta name="author" content="Miz Causevic, Kinetic Gain" />
+<link rel="canonical" href="https://provenance-lab.kineticgain.com/blog/are-ai-detectors-accurate/" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Kinetic Gain" />
+<meta property="og:title" content="Are AI Detectors Accurate? How to Tell if an Image Is AI-Generated" />
+<meta property="og:description" content="Why AI detection is unreliable in the real world, how to actually check an image, and what to use instead." />
+<meta property="og:url" content="https://provenance-lab.kineticgain.com/blog/are-ai-detectors-accurate/" />
+<meta property="og:image" content="https://provenance-lab.kineticgain.com/og-cover.png" />
+<meta property="article:published_time" content="2026-08-14" />
+<meta property="article:modified_time" content="2026-08-14" />
+<meta property="article:section" content="AI Content Authenticity" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Are AI Detectors Accurate?" />
+<meta name="twitter:description" content="Why AI detection is unreliable in the real world, and what to use instead." />
+<meta name="twitter:image" content="https://provenance-lab.kineticgain.com/og-cover.png" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Are AI Detectors Accurate? How to Tell if an Image Is AI-Generated",
+  "description": "Why AI image detection is unreliable once images are handled, how to actually check an image, and what to use instead of a probabilistic detector.",
+  "url": "https://provenance-lab.kineticgain.com/blog/are-ai-detectors-accurate/",
+  "image": "https://provenance-lab.kineticgain.com/og-cover.png",
+  "inLanguage": "en",
+  "datePublished": "2026-08-14",
+  "dateModified": "2026-08-14",
+  "wordCount": 1550,
+  "articleSection": "AI Content Authenticity",
+  "keywords": "are AI detectors accurate, how to tell if an image is AI generated, AI detector accuracy, content provenance",
+  "isAccessibleForFree": true,
+  "author": { "@type": "Person", "name": "Miz Causevic", "url": "https://www.linkedin.com/in/mirzacausevic", "jobTitle": "Platform & Security Engineering Lead" },
+  "publisher": { "@type": "Organization", "name": "Kinetic Gain", "url": "https://kineticgain.com/", "logo": { "@type": "ImageObject", "url": "https://provenance-lab.kineticgain.com/icon-512.png", "width": 512, "height": 512 } },
+  "about": [
+    { "@type": "Thing", "name": "AI content detection" },
+    { "@type": "Thing", "name": "AI image authenticity" },
+    { "@type": "Thing", "name": "Content provenance" }
+  ],
+  "mainEntityOfPage": "https://provenance-lab.kineticgain.com/blog/are-ai-detectors-accurate/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Are AI image detectors accurate?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Only under narrow conditions. Independent testing reports AI image detectors reaching roughly 94 to 97 percent accuracy on clean lab images, but falling below 50 percent once an image has been screenshotted, compressed, or passed through a social platform. They also produce false positives, flagging real photographs as AI-generated. Detection returns a probability, not proof." } },
+    { "@type": "Question", "name": "How can you tell if an image is AI-generated?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Combine signals rather than trusting one. Check the visible content for artifacts (hands, text, reflections, backgrounds), inspect metadata and any C2PA Content Credentials attached to the file, run more than one detector and treat the result as a probability, and weigh the source and context. No single check is conclusive, which is why verifiable provenance beats after-the-fact detection." } },
+    { "@type": "Question", "name": "Why do AI detectors give false positives?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Detectors learn statistical signatures of known generators, so anything outside their training distribution, including real photos, edited AI images, or content from a new model, can be misclassified. Studies of AI text detectors have documented high false-positive rates, and image detectors behave similarly once images are compressed or edited." } },
+    { "@type": "Question", "name": "What is more reliable than an AI detector?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Verifiable provenance. Instead of guessing after the fact whether content is AI-generated, C2PA Content Credentials attach cryptographically signed origin and edit history to the asset. That gives an explicit valid, invalid, or absent state rather than a probability, which is auditable in a way a detector score is not." } }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Watermark Stress Test", "item": "https://provenance-lab.kineticgain.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://provenance-lab.kineticgain.com/blog/" },
+    { "@type": "ListItem", "position": 3, "name": "Are AI detectors accurate?", "item": "https://provenance-lab.kineticgain.com/blog/are-ai-detectors-accurate/" }
+  ]
+}
+</script>
+<link rel="stylesheet" href="/blog/article.css" />
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="dot"></span> Watermark Stress Test</a>
+    <nav class="nav">
+      <a href="/blog/">Blog</a>
+      <a href="/why-watermarks-break/">White paper</a>
+      <a href="/">Open the lab</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+<div class="hero">
+  <span class="eyebrow">AI Content Authenticity · Explainer</span>
+  <h1>Are AI detectors accurate, and how do you tell if an image is AI-generated?</h1>
+  <p class="lede">AI image detectors look impressive in a demo and fall apart in the wild. Here is what the accuracy numbers actually say, why real photos get flagged as fake, how to check an image properly, and why the durable answer is not detection at all.</p>
+  <div class="byline">
+    <span>By <strong style="color:#e6e9ef">Miz Causevic</strong> · Platform &amp; Security Engineering Lead</span>
+    <span>·</span>
+    <span>14 August 2026</span>
+    <span>·</span>
+    <span>~8 min read</span>
+  </div>
+</div>
+
+<article>
+
+  <div class="tldr">
+    <div class="t">TL;DR</div>
+    <ul>
+      <li>Independent testing reports AI image detectors at roughly <strong>94 to 97 percent on clean lab images, but below 50 percent</strong> once an image is screenshotted, compressed, or run through social media.</li>
+      <li>They also produce <strong>false positives</strong>, flagging real photographs as AI-generated, which makes a single detector result unsafe to act on.</li>
+      <li>A detector returns a <strong>probability</strong>, not proof. It is a guess made after the fact about content it was not trained on.</li>
+      <li>To check an image, combine signals: visible artifacts, metadata, C2PA Content Credentials, more than one detector, and source context.</li>
+      <li>The reliable answer is <strong>verifiable provenance</strong>, not detection: signed Content Credentials give an explicit valid, invalid, or absent state instead of a score.</li>
+    </ul>
+  </div>
+
+  <p>"Is this image real or AI?" is now a daily question, and a whole category of tools promises a one-click answer. The uncomfortable truth is that those tools are least reliable exactly when you need them most: on images that have been shared, compressed, and re-saved, which is to say, on almost every image you actually encounter. Detection is a useful signal. It is a dangerous single source of truth.</p>
+
+  <h2>What the accuracy numbers actually say</h2>
+  <p>The headline figures detector vendors quote are real, and they are measured in the lab: on clean, uncompressed images from known generators, image detectors report accuracy in the mid-90s. The problem is what happens to that number in the real world. Independent reviews report accuracy <a href="https://aiangst.com/review/ai-image-detectors" target="_blank" rel="noreferrer">falling below 50 percent</a> once images are screenshotted, compressed, or passed through a social platform, the exact handling every image online goes through. A coin flip is not a verification tool.</p>
+  <p>The text-detection side has been studied even more harshly, and the pattern is the same. A 2026 study found leading detectors scoring in the <a href="https://originality.ai/blog/ai-detection-studies-round-up" target="_blank" rel="noreferrer">60s on accuracy and near zero on hybrid human-AI text</a>, and researchers have documented a <a href="https://www.arabworldbooks.com/en/e-zine/the-false-positive-epidemic-the-evidence-against-ai-writing-detectors" target="_blank" rel="noreferrer">false-positive problem</a> where lightly edited human writing gets flagged as machine-generated. Different medium, same lesson: these are statistical classifiers, and statistics degrade off the training distribution.</p>
+
+  <h2>Why real photos get flagged as fake</h2>
+  <p>A detector learns the fingerprints of the generators it was trained on. Show it something outside that distribution, a real photo with heavy compression, an AI image that has been edited, or output from a model released last week, and it can confidently give the wrong answer. That is why false positives are not a rare glitch but a structural feature: the tool is pattern-matching against what it has seen, and the world keeps producing things it has not. For anyone making a real decision, a newsroom, a platform, a teacher, a false "this is AI" verdict on a genuine photo is not a minor error. It is the whole risk.</p>
+
+  <h2>How to actually check whether an image is AI-generated</h2>
+  <p>There is no single reliable check, so the right method is to combine independent signals and weigh them, not to trust one score:</p>
+  <ul>
+    <li><strong>Look at the content.</strong> Hands, teeth, text in signage, reflections, jewelry, and repeating background patterns are still common giveaways, though they are disappearing fast as models improve.</li>
+    <li><strong>Inspect metadata and provenance.</strong> Check whether the file carries <a href="/blog/c2pa-content-credentials-explained/">C2PA Content Credentials</a>, which record how the asset was made and by what tool. This is the strongest single signal when present.</li>
+    <li><strong>Run more than one detector, and read the score as a probability.</strong> Agreement across tools raises confidence; a single high score does not settle it.</li>
+    <li><strong>Weigh the source and context.</strong> Who published it, where did it originate, does a reverse image search show an earlier version. Provenance-in-the-wild often beats pixel forensics.</li>
+  </ul>
+  <p>Notice that the most decisive item on that list is not a detector at all. It is provenance.</p>
+
+  <h2>Why provenance beats detection</h2>
+  <p>Detection and watermarking share the same weakness: both try to recover a signal after the fact, and both degrade under ordinary handling. Our companion <a href="/why-watermarks-break/">white paper</a> shows a hidden watermark collapsing under one edit, and you can reproduce the effect in the <a href="/">interactive lab</a>. Detection has it worse, because it does not even get a signal deliberately placed for it; it is reverse-engineering the generator from the pixels.</p>
+  <p>Verifiable provenance inverts the problem. Instead of guessing, <a href="/blog/c2pa-content-credentials-explained/">C2PA Content Credentials</a> attach cryptographically signed origin and edit history to the asset. The result is an explicit state, valid, invalid, or absent, that you can audit, rather than a confidence score you have to trust. It is the difference between "the detector thinks this is 62 percent likely AI" and "this asset carries a valid, signed record of how it was made." For any decision that matters, the second one is what you want.</p>
+  <p>None of this means detectors are useless. As one corroborating signal among several, at population scale, they have a place. The mistake is treating a probability as a verdict.</p>
+
+  <div class="cta">
+    <a class="btn primary" href="/">See why signals degrade, in the lab →</a>
+    <a class="btn ghost" href="/blog/c2pa-content-credentials-explained/">How Content Credentials work</a>
+  </div>
+
+  <h2 class="faq">Frequently asked questions</h2>
+  <div class="faq">
+    <h3>Are AI image detectors accurate?</h3>
+    <p>Only under narrow conditions. Independent testing reports roughly 94 to 97 percent on clean lab images but below 50 percent once an image is screenshotted, compressed, or passed through social media. They also flag real photos as AI-generated. A detector returns a probability, not proof.</p>
+    <h3>How can you tell if an image is AI-generated?</h3>
+    <p>Combine signals: check the content for artifacts, inspect metadata and any C2PA Content Credentials, run more than one detector and read the result as a probability, and weigh the source and context. No single check is conclusive, which is why verifiable provenance beats after-the-fact detection.</p>
+    <h3>Why do AI detectors give false positives?</h3>
+    <p>Detectors learn signatures of known generators, so anything outside their training distribution, including real photos, edited AI images, or output from a new model, can be misclassified. Text-detector studies document high false-positive rates, and image detectors behave similarly once images are compressed or edited.</p>
+    <h3>What is more reliable than an AI detector?</h3>
+    <p>Verifiable provenance. C2PA Content Credentials attach cryptographically signed origin and edit history to the asset, giving an explicit valid, invalid, or absent state rather than a probability, which is auditable in a way a detector score is not.</p>
+  </div>
+
+  <div class="related">
+    <h2>Keep reading</h2>
+    <div class="related-grid">
+      <a href="/why-watermarks-break/"><span class="rk">White paper</span><span class="rt">Why AI watermarks break, and the case for Content Credentials</span><span class="rd">The same degradation, shown on a hidden watermark you can break yourself.</span></a>
+      <a href="/blog/c2pa-content-credentials-explained/"><span class="rk">Explainer</span><span class="rt">C2PA Content Credentials, explained</span><span class="rd">The provenance layer that gives an explicit state instead of a score.</span></a>
+      <a href="/blog/watermarking-vs-content-credentials/"><span class="rk">Comparison</span><span class="rt">Watermarking vs. Content Credentials</span><span class="rd">Two ways to mark AI content, and where each one fails.</span></a>
+    </div>
+  </div>
+
+</article>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <div>An educational provenance project by <strong style="color:#cdd4df">Miz Causevic</strong> under <a href="https://kineticgain.com/" target="_blank" rel="noreferrer">Kinetic Gain LLC</a>.</div>
+    <div class="links">
+      <a href="/">The lab</a>
+      <a href="/blog/">Blog</a>
+      <a href="https://contentcredentials.org/" target="_blank" rel="noreferrer">C2PA</a>
+      <a href="https://github.com/mizcausevic-dev/watermark-stress-test" target="_blank" rel="noreferrer">Source</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
