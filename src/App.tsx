@@ -184,7 +184,7 @@ export default function App() {
             </div>
             <div className="flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-              <span>Signal: <strong className="text-white/80">Synthetic ring carrier</strong></span>
+              <span>Signal: <strong className="text-white/80">Synthetic ring carrier</strong> <span className="text-white/35">(teaching signal)</span></span>
             </div>
             <div className="flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
@@ -360,8 +360,8 @@ export default function App() {
                 Watermark Stress Test
               </div>
               <p className="text-[11px] text-white/45 leading-relaxed">
-                Built by <span className="text-white/70 font-semibold">Miz Causevic</span> — Boston Enterprise Technologist.
-                An educational provenance project under <a href={KG_URL} target="_blank" rel="noreferrer" className="text-cyan-400/80 hover:text-cyan-300 underline decoration-dotted">Kinetic Gain</a>.
+                Built by <span className="text-white/70 font-semibold">Miz Causevic</span> — Platform &amp; Security Engineering Lead.
+                An educational provenance project under <a href={KG_URL} target="_blank" rel="noreferrer" className="text-cyan-400/80 hover:text-cyan-300 underline decoration-dotted">Kinetic Gain LLC</a>.
               </p>
             </div>
 

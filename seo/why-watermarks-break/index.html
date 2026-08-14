@@ -197,6 +197,10 @@
     <strong>Scope note.</strong> The companion <a href="/">Watermark Stress Test</a> demonstrates these effects on a <em>synthetic</em> watermark it injects itself, entirely in your browser. It does not detect or remove SynthID or any production system. The goal is to teach the robustness lesson, not to defeat anyone's watermark.
   </div>
 
+  <div class="callout">
+    <strong>Calibration — read the numbers correctly.</strong> The lab's carrier is a single low-amplitude ring sinusoid: a <em>teaching</em> signal, deliberately not hardened the way a production system is. Real deployments such as Google DeepMind's SynthID scatter the mark redundantly and add error correction specifically to survive the kinds of edits shown here, so the lab's exact figures (e.g. ~100% collapsing to low single digits under one notch pass) illustrate the <em>mechanism</em>, not SynthID's measured robustness. What transfers is the qualitative result, which holds regardless of carrier strength: an in-band mark degrades <em>silently</em> under ordinary editing, and nothing in the asset tells you whether it happened. On the sophistication of production schemes, see SynthID-Text — Dathathri et&nbsp;al., <a href="https://www.nature.com/articles/s41586-024-08025-4" target="_blank" rel="noreferrer">"Scalable watermarking for identifying large language model outputs," <em>Nature</em> 634, 818–823 (2024)</a>.
+  </div>
+
   <figure>
     <img src="img/01-pipeline-run.webp" width="1400" height="664" loading="lazy" decoding="async"
          alt="A node-based perturbation pipeline in the Watermark Stress Test driving a synthetic AI watermark's carrier-correlation score down to 0% after notch filtering, quantization, and bilateral denoising." />
@@ -308,7 +312,7 @@
 
 <footer class="site">
   <div class="wrap">
-    <div>Built by <strong style="color:#cdd4df">Miz Causevic</strong> — an educational provenance project under <a href="https://kineticgain.com/" target="_blank" rel="noreferrer">Kinetic Gain</a>.</div>
+    <div>Built by <strong style="color:#cdd4df">Miz Causevic</strong> — an educational provenance project under <a href="https://kineticgain.com/" target="_blank" rel="noreferrer">Kinetic Gain LLC</a>.</div>
     <div class="links">
       <a href="/">The lab</a>
       <a href="https://contentcredentials.org/" target="_blank" rel="noreferrer">C2PA</a>
