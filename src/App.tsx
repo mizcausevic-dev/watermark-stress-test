@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   ShieldCheck,
@@ -52,8 +52,31 @@ const LINKEDIN_URL = 'https://www.linkedin.com/in/mirzacausevic';
 const REPO_URL = 'https://github.com/mizcausevic-dev/watermark-stress-test';
 const ARTICLE_URL = '/why-watermarks-break/';
 
+/**
+ * Hash-addressable workspaces: each lab is deep-linkable / shareable /
+ * bookmarkable via a readable fragment (e.g. …/#pipeline). Fragments are not
+ * separate documents, so the canonical stays the base URL and SEO is unaffected.
+ */
+const TAB_SLUGS: Record<TabId, string> = {
+  images: 'image',
+  text: 'text',
+  audio: 'audio',
+  analysis: 'analysis',
+  showdown: 'credentials',
+  comfy: 'pipeline',
+  research: 'briefing',
+};
+const SLUG_TO_TAB = Object.fromEntries(
+  Object.entries(TAB_SLUGS).map(([id, slug]) => [slug, id as TabId]),
+) as Record<string, TabId>;
+
+const tabFromHash = (): TabId => {
+  if (typeof window === 'undefined') return 'images';
+  return SLUG_TO_TAB[window.location.hash.replace(/^#/, '')] ?? 'images';
+};
+
 export default function App() {
-  const [activeTab, setActiveTab] = useState<TabId>('images');
+  const [activeTab, setActiveTab] = useState<TabId>(tabFromHash);
   const [activeBgTopic, setActiveBgTopic] = useState<string>('how_synthid_works');
 
   const onTabKey = useCallback((e: React.KeyboardEvent<HTMLElement>) => {
@@ -65,6 +88,26 @@ export default function App() {
     const btns = e.currentTarget.querySelectorAll('button');
     (btns[next] as HTMLButtonElement | undefined)?.focus();
   }, [activeTab]);
+
+  // Keep the URL fragment in sync with the active workspace (shareable deep link).
+  // Leaves the bare homepage URL clean for the default tab.
+  useEffect(() => {
+    const slug = TAB_SLUGS[activeTab];
+    const current = window.location.hash.replace(/^#/, '');
+    if (current === slug) return;
+    if (!current && activeTab === 'images') return;
+    window.history.replaceState(null, '', `#${slug}`);
+  }, [activeTab]);
+
+  // Respond to back/forward navigation and manual fragment edits.
+  useEffect(() => {
+    const onHash = () => {
+      const t = SLUG_TO_TAB[window.location.hash.replace(/^#/, '')];
+      if (t) setActiveTab(t);
+    };
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
 
   return (
     <div className="min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/25 selection:text-cyan-200 relative overflow-x-hidden">
