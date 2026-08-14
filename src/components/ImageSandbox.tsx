@@ -2158,6 +2158,8 @@ export default function ImageSandbox() {
               max="9.0"
               step="0.5"
               disabled={!isWatermarked}
+              aria-label="Watermark modulation gain (strength)"
+              aria-valuetext={`${watermarkStrength.toFixed(1)} decibels`}
               value={watermarkStrength}
               onChange={(e) => setWatermarkStrength(parseFloat(e.target.value))}
               className="w-full h-1.5 bg-white/10 rounded-lg appearance-none accent-cyan-400 cursor-pointer disabled:opacity-40"
@@ -3039,6 +3041,8 @@ export default function ImageSandbox() {
                       min="0"
                       max="360"
                       step="5"
+                      aria-label="FFT spectrum rotation"
+                      aria-valuetext={`${fftRotation} degrees`}
                       value={fftRotation}
                       onChange={(e) => setFftRotation(parseInt(e.target.value))}
                       className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-cyan-400 outline-none"
@@ -3084,6 +3088,8 @@ export default function ImageSandbox() {
                       min="0.10"
                       max="1.00"
                       step="0.05"
+                      aria-label="FFT overlay opacity"
+                      aria-valuetext={`${Math.round(fftOverlayOpacity * 100)} percent`}
                       value={fftOverlayOpacity}
                       onChange={(e) => setFftOverlayOpacity(parseFloat(e.target.value))}
                       className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-cyan-400 outline-none"
@@ -3294,7 +3300,7 @@ export default function ImageSandbox() {
           <div className="flex items-center gap-2">
             <Sliders className="w-5 h-5 text-indigo-400 animate-pulse" />
             <h3 className="text-sm font-semibold tracking-wide uppercase text-white/90">
-              Step 4: Spatial Distortions
+              Step 3: Spatial Distortions
             </h3>
           </div>
           <p className="text-xs text-white/55 leading-relaxed">
@@ -3313,6 +3319,8 @@ export default function ImageSandbox() {
                 min="0"
                 max="45"
                 step="5"
+                aria-label="Crop amount"
+                aria-valuetext={`${cropPercent} percent`}
                 value={cropPercent}
                 onChange={(e) => setCropPercent(parseInt(e.target.value))}
                 className="w-full h-1 bg-white/10 rounded appearance-none accent-indigo-400 cursor-pointer"
@@ -3330,6 +3338,8 @@ export default function ImageSandbox() {
                 min="10"
                 max="100"
                 step="5"
+                aria-label="JPEG re-encode quality"
+                aria-valuetext={`quality ${jpegQuality}`}
                 value={jpegQuality}
                 onChange={(e) => setJpegQuality(parseInt(e.target.value))}
                 className="w-full h-1 bg-white/10 rounded appearance-none accent-indigo-400 cursor-pointer"
@@ -3370,6 +3380,8 @@ export default function ImageSandbox() {
                 min="0"
                 max="4"
                 step="0.5"
+                aria-label="Gaussian blur radius"
+                aria-valuetext={`${blurRadius} pixels`}
                 value={blurRadius}
                 onChange={(e) => setBlurRadius(parseFloat(e.target.value))}
                 className="w-full h-1 bg-white/10 rounded appearance-none accent-indigo-400 cursor-pointer"
@@ -3387,6 +3399,8 @@ export default function ImageSandbox() {
                 min="-50"
                 max="50"
                 step="5"
+                aria-label="Brightness offset"
+                aria-valuetext={`${brightnessOffset > 0 ? '+' : ''}${brightnessOffset}`}
                 value={brightnessOffset}
                 onChange={(e) => setBrightnessOffset(parseInt(e.target.value))}
                 className="w-full h-1 bg-white/10 rounded appearance-none accent-indigo-400 cursor-pointer"
@@ -3404,6 +3418,8 @@ export default function ImageSandbox() {
                 min="0"
                 max="8"
                 step="1"
+                aria-label="Salt-and-pepper noise amount"
+                aria-valuetext={`${saltPepperFrac} percent`}
                 value={saltPepperFrac}
                 onChange={(e) => setSaltPepperFrac(parseInt(e.target.value))}
                 className="w-full h-1 bg-white/10 rounded appearance-none accent-indigo-400 cursor-pointer"
@@ -3421,6 +3437,8 @@ export default function ImageSandbox() {
                 min="0.5"
                 max="1.8"
                 step="0.1"
+                aria-label="Gamma correction"
+                aria-valuetext={`${gammaVal.toFixed(2)}`}
                 value={gammaVal}
                 onChange={(e) => setGammaVal(parseFloat(e.target.value))}
                 className="w-full h-1 bg-white/10 rounded appearance-none accent-indigo-400 cursor-pointer"
@@ -3438,6 +3456,8 @@ export default function ImageSandbox() {
                 min="-15"
                 max="15"
                 step="3"
+                aria-label="Shear angle"
+                aria-valuetext={`${shearAngle} degrees`}
                 value={shearAngle}
                 onChange={(e) => setShearAngle(parseInt(e.target.value))}
                 className="w-full h-1 bg-white/10 rounded appearance-none accent-indigo-400 cursor-pointer"
@@ -3476,7 +3496,13 @@ export default function ImageSandbox() {
           </div>
 
           {/* Scanner Dial Gauge */}
-          <div className="flex flex-col items-center gap-2 py-2">
+          <div
+            className="flex flex-col items-center gap-2 py-2"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+            aria-label={`Carrier detection: ${detection.confidence}% confidence, ${detection.status}`}
+          >
             <div className="relative w-28 h-28 flex items-center justify-center bg-black/40 border border-white/10 rounded-full">
               
               {/* Spinning active radar border */}
@@ -3591,7 +3617,7 @@ export default function ImageSandbox() {
             <div className="flex items-center gap-2">
               <Zap className="w-5 h-5 text-cyan-400" />
               <h3 className="text-sm font-semibold tracking-wide uppercase text-white/90">
-                Step 3: Adversarial Tactics
+                Step 4: Adversarial Tactics
               </h3>
             </div>
           </div>
@@ -3691,6 +3717,8 @@ export default function ImageSandbox() {
                 min={activeBypass === 'vae_quantize' ? '10' : '4'}
                 max="50"
                 step="2"
+                aria-label="Adversarial method intensity"
+                aria-valuetext={`${bypassIntensity} percent`}
                 value={bypassIntensity}
                 onChange={(e) => setBypassIntensity(parseInt(e.target.value))}
                 className="w-full h-1.5 bg-white/10 rounded-lg appearance-none accent-teal-400 cursor-pointer"
