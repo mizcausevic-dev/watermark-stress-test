@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://provenance-lab.kineticgain.com/why-watermarks-break/" />
 <meta property="og:image" content="https://provenance-lab.kineticgain.com/og-cover.png" />
 <meta property="article:published_time" content="2026-06-06" />
-<meta property="article:modified_time" content="2026-06-06" />
+<meta property="article:modified_time" content="2026-08-14" />
 <meta property="article:author" content="Miz Causevic" />
 <meta property="article:section" content="Content Provenance" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -43,7 +43,7 @@
   ],
   "inLanguage": "en",
   "datePublished": "2026-06-06",
-  "dateModified": "2026-06-06",
+  "dateModified": "2026-08-14",
   "wordCount": 2400,
   "articleSection": "Content Provenance",
   "keywords": "AI watermarking, SynthID, C2PA, Content Credentials, content provenance, watermark robustness, AI image provenance",
@@ -256,7 +256,7 @@
   <p>This is the structural ceiling of any <em>in-band</em> signal. It does not make watermarking useless — as a corroborating signal at population scale it is valuable. It makes watermarking insufficient as the <em>foundation</em> of a provenance claim. Regulators are already circling this gap: the <strong>EU AI Act's Article 50</strong> transparency duties push synthetic-content disclosure toward "machine-readable and reliable," and a watermark-only answer does not survive the question "what does absence prove?" <em>(General information, not legal advice.)</em></p>
 
   <h2>The durable fix: sign provenance, don't hide it</h2>
-  <p>The alternative inverts the design. Instead of hiding a signal and hoping it survives, <strong>C2PA / Content Credentials</strong> attach cryptographically signed metadata — who created the asset, with what tool, through what edits — and bind it to the content with a tamper-evident manifest. The properties are the mirror image of watermarking's weaknesses:</p>
+  <p>The alternative inverts the design. Instead of hiding a signal and hoping it survives, <strong>C2PA / Content Credentials</strong> attach cryptographically signed metadata — who created the asset, with what tool, through what edits — and bind it to the content with a tamper-evident manifest. The current C2PA technical specification is <strong>version 2.4</strong>, and the 2.x line now runs a live <a href="https://c2pa.org/conformance/" target="_blank" rel="noreferrer">Conformance Program</a> so generator and validator products can be independently checked. The properties are the mirror image of watermarking's weaknesses:</p>
 
   <figure>
     <img src="img/05-credentials-tampered.webp" width="1400" height="664" loading="lazy" decoding="async"

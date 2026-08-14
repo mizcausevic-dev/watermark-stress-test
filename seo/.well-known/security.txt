@@ -1,0 +1,7 @@
+# Security contact for provenance-lab.kineticgain.com (RFC 9116).
+# Educational, client-side-only project: no backend, no accounts, no telemetry.
+Contact: mailto:causevic.miz@gmail.com
+Expires: 2027-08-14T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://provenance-lab.kineticgain.com/.well-known/security.txt
+Policy: https://github.com/mizcausevic-dev/watermark-stress-test/security/policy

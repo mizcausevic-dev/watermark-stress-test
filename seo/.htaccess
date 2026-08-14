@@ -1,0 +1,41 @@
+# provenance-lab.kineticgain.com — security + caching baseline.
+# A content-provenance/trust product should model the headers, not just discuss them.
+# Deploys to the subdomain doc root (/provenance-lab/.htaccess). LiteSpeed/Apache.
+
+<IfModule mod_headers.c>
+  # Transport + framing + sniffing
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+
+  # CSP built from the app's ACTUAL runtime origins:
+  #   script  : self only (the module bundle; JSON-LD is non-executable data)
+  #   style   : self + 'unsafe-inline' (framer-motion inline style attrs + inline hero CSS)
+  #             + fonts.googleapis.com (the Space Grotesk/Mono @import stylesheet)
+  #   font    : self + fonts.gstatic.com (the woff2 files)
+  #   img     : self + data: + blob: (canvas outputs, presets)
+  #   connect : self (fully client-side; no external APIs)
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'self'; worker-src 'self' blob:; manifest-src 'self'"
+</IfModule>
+
+# Correct MIME for the web app manifest (was served as text/plain).
+<IfModule mod_mime.c>
+  AddType application/manifest+json .webmanifest
+</IfModule>
+
+# Cache policy: content-hashed JS/CSS immutable for a year; images a day;
+# HTML/JSON/txt/xml short so content + credentials stay fresh.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(png|jpe?g|svg|webp|ico|woff2?)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+  <FilesMatch "\.(html|json|webmanifest|txt|xml)$">
+    Header set Cache-Control "public, max-age=300, must-revalidate"
+  </FilesMatch>
+</IfModule>

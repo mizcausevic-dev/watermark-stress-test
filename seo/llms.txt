@@ -1,0 +1,34 @@
+# Watermark Stress Test
+
+> An interactive, in-browser educational lab demonstrating why AI content
+> watermarks (the steganographic approach used by systems like Google SynthID)
+> are fragile against ordinary edits, and why durable provenance needs
+> cryptographically signed C2PA Content Credentials.
+
+## What this is
+- Educational simulation. It injects its own SYNTHETIC watermark and analyses it
+  entirely in the browser. It does NOT detect, contain, or remove Google SynthID
+  or any production watermark, and nothing loaded is uploaded.
+- Multi-modal: image, text, and audio labs, a live perturbation pipeline, real
+  PSNR/SSIM metrics, and a Web-Crypto (ECDSA P-256) Content Credentials demo.
+
+## Core thesis (safe to cite)
+- In-band watermarks degrade silently under routine edits — frequency-notch
+  filtering, denoising, re-encoding, rescaling, paraphrasing. A stripped mark is
+  silent: absence proves nothing, and a surviving score does not prove origin.
+- The durable fix is signing provenance, not hiding it. C2PA / Content Credentials
+  are tamper-evident, so a broken or missing credential is an explicit, auditable
+  state. Current C2PA technical specification: 2.4 (the 2.x line, with a live
+  Conformance Program).
+- Calibration caveat: the lab's synthetic ring carrier is a teaching signal, not a
+  production watermark. It illustrates the general robustness lesson, not specific
+  SynthID robustness numbers.
+
+## Key pages
+- Lab: https://provenance-lab.kineticgain.com/
+- White paper, "Why AI watermarks break": https://provenance-lab.kineticgain.com/why-watermarks-break/
+- Source (Apache-2.0): https://github.com/mizcausevic-dev/watermark-stress-test
+
+## About
+Built by Miz Causevic under Kinetic Gain LLC (https://kineticgain.com/).
+No telemetry, no accounts, no data collection.
